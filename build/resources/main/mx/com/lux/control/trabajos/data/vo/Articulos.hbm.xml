@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="mx.com.lux.control.trabajos.data.vo.Articulos" table="articulos" schema="public">
+		<id name="idArticulo" type="int">
+			<column name="id_articulo" />
+			<generator class="assigned" />
+		</id>
+		<property name="articulo" type="string">
+			<column name="articulo" length="20" not-null="true" />
+		</property>
+		<property name="colorCode" type="string">
+			<column name="color_code" length="12" />
+		</property>
+		<property name="descArticulo" type="string">
+			<column name="desc_articulo" />
+		</property>
+		<property name="idGenerico" type="char">
+			<column name="id_generico" length="1" />
+		</property>
+		<property name="idGenTipo" type="string">
+			<column name="id_gen_tipo" length="2" />
+		</property>
+		<property name="idGenSubtipo" type="string">
+			<column name="id_gen_subtipo" length="2" />
+		</property>
+		<property name="precio" type="string">
+			<column name="precio" scale="0" />
+		</property>
+		<property name="precioO" type="string">
+			<column name="precio_o" scale="0" />
+		</property>
+		<property name="sArticulo" type="char">
+			<column name="s_articulo" length="1" />
+		</property>
+		<property name="idSync" type="char">
+			<column name="id_sync" length="1" not-null="true" />
+		</property>
+		<property name="fechaMod" type="timestamp">
+			<column name="fecha_mod" length="29" not-null="true" />
+		</property>
+		<property name="idMod" type="string">
+			<column name="id_mod" length="13" not-null="true" />
+		</property>
+		<property name="idSucursal" type="int">
+			<column name="id_sucursal" not-null="true" />
+		</property>
+		<property name="colorDesc" type="string">
+			<column name="color_desc" />
+		</property>
+		<property name="idCb" type="string">
+			<column name="id_cb" />
+		</property>
+		<property name="idDisenoLente" type="char">
+			<column name="id_diseno_lente" length="1" />
+		</property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 21/07/2011 02:01:22 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="mx.com.lux.control.trabajos.data.vo.JbRoto" table="jb_rotos"
+		dynamic-insert="true">
+		<id name="idRoto" type="int">
+			<column name="id_roto" />
+			<generator class="sequence">
+				<param name="sequence">jb_rotos_id_roto_seq</param>
+			</generator>
+		</id>
+		<property name="rx" type="string">
+			<column name="rx" />
+		</property>
+		<property name="tipo" type="java.lang.String">
+			<column name="tipo" length="5" />
+		</property>
+		<property name="material" type="string">
+			<column name="material" />
+		</property>
+		<property name="causa" type="string">
+			<column name="causa" />
+		</property>
+		<property name="emp" type="java.lang.String">
+			<column name="emp" length="5" />
+		</property>
+		<property name="numRoto" type="int">
+			<column name="num_roto" />
+		</property>
+		<property name="alta" type="boolean">
+			<column name="alta" />
+		</property>
+		<property name="fechaProm" type="java.util.Date">
+			<column name="fecha_prom" length="13" />
+		</property>
+		<property name="llamada" type="java.lang.Boolean">
+			<column name="llamada" />
+		</property>
+		<property name="fecha" type="java.sql.Timestamp">
+			<column name="fecha" length="35" />
+		</property>
+		<property name="idMod" type="string">
+			<column name="id_mod" length="13" />
+		</property>
+	</class>
+</hibernate-mapping>

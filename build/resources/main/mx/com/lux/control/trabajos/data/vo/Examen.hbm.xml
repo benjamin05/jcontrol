@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="mx.com.lux.control.trabajos.data.vo" schema="public">
+	<class name="Examen" table="examen">
+		<id name="idExamen" type="int">
+			<column name="id_examen" />
+			<generator class="native" />
+		</id>
+		<property name="idCliente" type="integer" not-null="true">
+			<column name="id_cliente" />
+		</property>
+		<property name="idAtendio" column="id_atendio" type="string" not-null="true" />
+		<property name="avSaOdLejosEx" type="string">
+			<column name="av_sa_od_lejos_ex" />
+		</property>
+		<property name="avSaOiLejosEx" type="string">
+			<column name="av_sa_oi_lejos_ex" />
+		</property>
+		<property name="objOdEsfEx" type="string">
+			<column name="obj_od_esf_ex" />
+		</property>
+		<property name="objOdCilEx" type="string">
+			<column name="obj_od_cil_ex" />
+		</property>
+		<property name="objOdEjeEx" type="string">
+			<column name="obj_od_eje_ex" />
+		</property>
+		<property name="objOiEsfEx" type="string">
+			<column name="obj_oi_esf_ex" />
+		</property>
+		<property name="objOiCilEx" type="string">
+			<column name="obj_oi_cil_ex" />
+		</property>
+		<property name="objOiEjeEx" type="string">
+			<column name="obj_oi_eje_ex" />
+		</property>
+		<property name="objDiEx" type="string">
+			<column name="obj_di_ex" />
+		</property>
+		<property name="subOdEsfEx" type="string">
+			<column name="sub_od_esf_ex" />
+		</property>
+		<property name="subOdCilEx" type="string">
+			<column name="sub_od_cil_ex" />
+		</property>
+		<property name="subOdEjeEx" type="string">
+			<column name="sub_od_eje_ex" />
+		</property>
+		<property name="subOdAdcEx" type="string">
+			<column name="sub_od_adc_ex" />
+		</property>
+		<property name="subOdAdiEx" type="string">
+			<column name="sub_od_adi_ex" />
+		</property>
+		<property name="subOdAvEx" type="string">
+			<column name="sub_od_av_ex" />
+		</property>
+		<property name="subOiEsfEx" type="string">
+			<column name="sub_oi_esf_ex" />
+		</property>
+		<property name="subOiCilEx" type="string">
+			<column name="sub_oi_cil_ex" />
+		</property>
+		<property name="subOiEjeEx" type="string">
+			<column name="sub_oi_eje_ex" />
+		</property>
+		<property name="subOiAdcEx" type="string">
+			<column name="sub_oi_adc_ex" />
+		</property>
+		<property name="subOiAdiEx" type="string">
+			<column name="sub_oi_adi_ex" />
+		</property>
+		<property name="subOiAvEx" type="string">
+			<column name="sub_oi_av_ex" />
+		</property>
+		<property name="observacionesEx" type="string">
+			<column name="observaciones_ex" />
+		</property>
+		<property name="idSync" type="string">
+			<column name="id_sync" />
+		</property>
+		<property name="fechaMod" type="timestamp">
+			<column name="fecha_mod" />
+		</property>
+		<property name="idMod" type="string">
+			<column name="id_mod" />
+		</property>
+		<property name="idSucursal" type="integer">
+			<column name="id_sucursal" />
+		</property>
+		<property name="diOd" type="string">
+			<column name="di_od" />
+		</property>
+		<property name="diOi" type="string">
+			<column name="di_oi" />
+		</property>
+		<property name="udf1" type="string">
+			<column name="udf1" />
+		</property>
+		<property name="udf2" type="string">
+			<column name="udf2" />
+		</property>
+		<property name="udf3" type="string">
+			<column name="udf3" />
+		</property>
+		<property name="factura" type="string">
+			<column name="factura" />
+		</property>
+		<property name="tipoCli" type="string">
+			<column name="tipo_cli" />
+		</property>
+		<property name="tipoOft" type="string">
+			<column name="tipo_oft" />
+		</property>
+		<property name="fechaAlta" type="date">
+			<column name="fecha_alta" />
+		</property>
+		<property name="idOftalmologo" type="integer">
+			<column name="id_oftalmologo" />
+		</property>
+		<property name="horaAlta" type="date">
+			<column name="hora_alta" />
+		</property>
+		<property name="idExOri" type="string">
+			<column name="id_ex_ori" />
+		</property>
+	</class>
+</hibernate-mapping>

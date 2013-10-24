@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.dialect">${hibernate.dialect}</property>
+		<property name="hibernate.default_schema">${hibernate.default_schema}</property>
+		<property name="hibernate.show_sql">false</property>
+		<property name="hibernate.format_sql">false</property>
+		<property name="hibernate.connection.CharSet">utf8</property>
+		<property name="hibernate.connection.characterEncoding">utf8</property>
+		<property name="hibernate.connection.useUnicode">true</property>
+
+		<mapping resource="mx/com/lux/control/trabajos/data/query/querys-ordenservicio.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/query/querys-trabajo.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/query/querys-contacto.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/query/querys-trabajo-menu-windows.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/query/querys-sistema.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/query/querys-sobres.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/query/querys-envios.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/Acuses.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/Articulos.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/Cajas.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/Cliente.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/Codigo.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/ContactoView.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/DetalleNotaVenta.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/DoctoInv.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/Dominios.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/EstadoRepublica.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/Empleado.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/EmpresaFicha.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/FormaContacto.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/GParametro.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/Jb.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/JbDev.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/JbEstado.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/JbExterno.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/JbGarantia.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/JbGrupo.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/JbGrupoDetalle.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/JbLlamada.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/JbNota.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/JbPagoExtra.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/JbRoto.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/JbServicio.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/JbSobre.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/JbTrack.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/JbViaje.hbm.xml" />
+        <mapping resource="mx/com/lux/control/trabajos/data/vo/JbViajeDet.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/Municipio.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/NotaVenta.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/Nomina.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/Pagos.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/ParentescoFichas.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/PlazosPagoFichas.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/Polizas.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/Receta.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/Sucursal.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/TipoContacto.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/TrackView.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/NotaFactura.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/InstitucionIc.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/EdoGrupo.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/Examen.hbm.xml" />
+		<mapping resource="mx/com/lux/control/trabajos/data/vo/Reimpresion.hbm.xml" />
+        <mapping resource="mx/com/lux/control/trabajos/data/vo/TipoPago.hbm.xml" />
+        <mapping resource="mx/com/lux/control/trabajos/data/vo/Banco.hbm.xml" />
+        <mapping resource="mx/com/lux/control/trabajos/data/vo/Terminal.hbm.xml" />
+        <mapping resource="mx/com/lux/control/trabajos/data/vo/Plan.hbm.xml" />
+        <mapping resource="mx/com/lux/control/trabajos/data/vo/Generico.hbm.xml" />
+        <mapping resource="mx/com/lux/control/trabajos/data/vo/TipoAcuse.hbm.xml" />
+        <mapping resource="mx/com/lux/control/trabajos/data/vo/CondicionIcGenerico.hbm.xml" />
+        <mapping resource="mx/com/lux/control/trabajos/data/vo/Reposicion.hbm.xml" />
+        <mapping resource="mx/com/lux/control/trabajos/data/vo/CausaReposicion.hbm.xml" />
+        <mapping resource="mx/com/lux/control/trabajos/data/vo/ResponsableReposicion.hbm.xml" />
+        <mapping resource="mx/com/lux/control/trabajos/data/vo/DetalleReposicion.hbm.xml" />
+        <mapping resource="mx/com/lux/control/trabajos/data/vo/PolizasDetalle.hbm.xml" />
+        <mapping resource="mx/com/lux/control/trabajos/data/vo/Prisma.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>        

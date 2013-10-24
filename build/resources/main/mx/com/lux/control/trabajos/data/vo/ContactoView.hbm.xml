@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	<!-- Generated 20/07/2011 10:00:00 AM by Hibernate Tools 3.3.0.GA -->
+<hibernate-mapping>
+	<class name="mx.com.lux.control.trabajos.data.vo.ContactoView">
+		<subselect><![CDATA[
+				SELECT 
+					jbl.rx,
+					coalesce( cli.titulo, '') AS titulo,
+					coalesce( job.cliente, '') AS cliente,
+					coalesce(job.fecha_venta, '1900-01-01 00:00:00') AS fecha_venta, 
+					jbl.emp_atendio, 
+					cast(trim(both ' ' from jbl.tipo)as varchar) AS tipo,
+					jbl.estado,
+					coalesce(job.estado, '') AS jbEstado,
+					coalesce(tcontact.descripcion, '')	AS descripcion,
+					CASE
+						WHEN job.tipo_venta = 'Grupo' THEN (SELECT MAX(miembro.fecha_promesa) FROM JB miembro where miembro.rx = job.rx) 
+						ELSE coalesce(job.fecha_promesa, '1900-01-01')
+					END as fecha_promesa,
+					CAST(job.id_cliente AS VARCHAR) AS id_cliente_jb,
+					CASE
+						WHEN job.tipo_venta = 'Grupo' THEN (SELECT SUM(miembro.saldo) FROM JB miembro where miembro.rx = job.rx) 
+						ELSE coalesce(job.saldo,'$0' )
+					END as saldo,
+					coalesce(fcontact.contacto, '') AS contacto,
+					coalesce(fcontact.observaciones, '') AS obs,
+					coalesce(job.material, 'VARIAS FACTURAS') AS material,
+					jbl.num_llamada
+				FROM JB_LLAMADA jbl LEFT JOIN 
+					JB job ON jbl.rx = job.rx LEFT JOIN
+					FORMA_CONTACTO fcontact ON jbl.rx = fcontact.rx LEFT JOIN
+					TIPO_CONTACTO tcontact ON fcontact.id_tipo_contacto = tcontact.id_tipo_contacto
+					LEFT JOIN CLIENTES cli ON (
+						CASE
+							WHEN ( job.id_cliente IS NULL OR job.id_cliente = '' )  THEN 0
+							ELSE CAST(job.id_cliente AS INTEGER)
+						END
+					) = cli.id_cliente
+				ORDER BY rx
+			]]>
+    	</subselect>
+    	<id name="rx" type="java.lang.String">
+            <column name="rx" />       
+        </id>
+        	<property name="titulo" type="java.lang.String" update="false" insert="false">
+				<column name="titulo" />
+			</property>
+			<property name="cliente" type="java.lang.String">
+				<column name="cliente" />
+			</property>
+			<property name="fechaHoraFactura" type="java.sql.Timestamp">
+				<column name="fecha_venta" />
+			</property>
+			<property name="atendio" type="java.lang.String">
+				<column name="emp_atendio" length="5" />
+			</property>
+			<property name="tipoLlamada" type="java.lang.String">
+				<column name="tipo" length="20" />
+			</property>
+			<property name="estadoLlamada" type="java.lang.String">
+				<column name="estado" length="5" />
+			</property>
+			<property name="jbEstado" type="java.lang.String">
+				<column name="jbEstado" length="5" />
+			</property>
+			<property name="descripcionTipoContacto" type="java.lang.String">
+				<column name="descripcion" />
+			</property>
+			<property name="fechaPromesa" type="java.sql.Timestamp">
+				<column name="fecha_promesa" />
+			</property>
+			<property name="idClienteJb" type="java.lang.String">
+				<column name="id_cliente_jb" />
+			</property>
+			<property name="saldo" type="java.lang.String">
+				<column name="saldo" />
+			</property>
+			<property name="contactoForma" type="java.lang.String">
+				<column name="contacto" />
+			</property>
+			<property name="obsForma" type="java.lang.String">
+				<column name="obs" />
+			</property>
+			<property name="material" type="java.lang.String">
+				<column name="material" />
+			</property>
+			<property name="numLlamadaJbLlamada" type="java.lang.Integer">
+				<column name="num_llamada" />
+			</property>    	
+	</class>
+</hibernate-mapping>

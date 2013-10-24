@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="data">
+
+	<query name="findAllSobres">
+		SELECT js FROM JbSobre js WHERE js.fechaEnvio IS NULL
+		ORDER BY js.folioSobre
+	</query>
+
+	<query name="countAllSobres">
+		SELECT COUNT(*) FROM JbSobre js WHERE js.fechaEnvio
+		IS NULL
+	</query>
+
+	<query name="findAllSobresByFechaEnvioNullAndRxEmpty">
+		SELECT js FROM JbSobre js WHERE js.fechaEnvio IS NULL
+		AND (js.rx IS NULL OR js.rx = '') ORDER BY js.folioSobre 
+	</query>
+
+	<query name="findAllSobresByFechaEnvioNullAndRxNotEmpty">
+		SELECT js FROM JbSobre js WHERE js.fechaEnvio IS NULL
+		AND (js.rx IS NOT NULL AND js.rx != '') ORDER BY js.folioSobre 
+	</query>
+
+	<query name="findAllSobresByRx">
+		SELECT js FROM JbSobre js WHERE js.rx = :rxParam
+	</query>
+
+</hibernate-mapping>

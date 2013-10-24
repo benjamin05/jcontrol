@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 21/07/2011 02:01:22 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="mx.com.lux.control.trabajos.data.vo.JbExterno" table="jb_externos">
+        <id name="factura" type="java.lang.String">
+            <column name="factura" />
+            <generator class="assigned" />
+        </id>
+        <property name="origen" type="string">
+            <column name="origen" />
+        </property>
+        <property name="idCliente" type="java.lang.Integer">
+            <column name="id_cliente" />
+        </property>
+        <property name="lente" type="string">
+            <column name="lente" length="10" />
+        </property>
+        <property name="armazon" type="string">
+            <column name="armazon" length="20" />
+        </property>
+        <property name="material" type="string">
+            <column name="material" />
+        </property>
+        <property name="forma" type="string">
+            <column name="forma" />
+        </property>
+        <property name="fechaEntrega" type="java.util.Date">
+            <column name="fecha_entrega" length="13" />
+        </property>
+        <property name="fechaPromesa" type="java.util.Date">
+            <column name="fecha_promesa" length="13" />
+        </property>
+        <property name="fechaFactura" type="java.util.Date">
+            <column name="fecha_factura" length="13" />
+        </property>
+    </class>
+</hibernate-mapping>

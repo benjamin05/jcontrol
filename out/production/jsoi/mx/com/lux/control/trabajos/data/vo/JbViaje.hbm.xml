@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 21/07/2011 02:01:22 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="mx.com.lux.control.trabajos.data.vo.JbViaje" table="jb_viaje">
+        <composite-id name="id" class="mx.com.lux.control.trabajos.data.vo.JbViajeId">
+            <key-property name="idViaje" type="string">
+                <column name="id_viaje" length="6" />
+            </key-property>
+            <key-property name="fecha" type="date">
+                <column name="fecha" length="13" />
+            </key-property>
+        </composite-id>
+        <property name="folio" type="string">
+            <column name="folio" length="20" />
+        </property>
+        <property name="hora" type="time">
+            <column name="hora" length="15" not-null="true" />
+        </property>
+        <property name="abierto" type="java.lang.Boolean">
+            <column name="abierto" />
+        </property>
+        <property name="emp" type="java.lang.String">
+            <column name="emp" length="5" />
+        </property>
+    </class>
+</hibernate-mapping>

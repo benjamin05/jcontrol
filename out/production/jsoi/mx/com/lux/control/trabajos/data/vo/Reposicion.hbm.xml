@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="mx.com.lux.control.trabajos.data.vo.Reposicion" schema="public" table="repo">
+        <composite-id>
+            <key-property name="factura" column="factura" type="string"/>
+            <key-property name="numeroOrden" column="num_orden" type="integer"/>
+            <key-property name="idSucursal" column="suc" type="string" length="4"/>
+        </composite-id>
+        <many-to-one name="empleado" column="emp" class="mx.com.lux.control.trabajos.data.vo.Empleado" update="false" fetch="select" lazy="false"/>
+        <property name="altObl" column="alt_obl" type="string" length="4"/>
+        <property name="area" column="area" type="string"/>
+        <many-to-one name="causa" column="causa" class="mx.com.lux.control.trabajos.data.vo.CausaReposicion" update="false" fetch="select" lazy="false"/>
+        <property name="cliente" column="cliente" type="string"/>
+        <property name="diCerca" column="di_cerca" type="string"/>
+        <property name="diLejos" column="di_lejos" type="string"/>
+        <property name="odDi" column="di_od" type="string" length="6"/>
+        <property name="oiDi" column="di_oi" type="string" length="6"/>
+        <property name="dx" column="dx" type="string"/>
+        <property name="fecha" column="fecha" type="timestamp"/>
+        <property name="folio" column="folio" type="string"/>
+        <property name="idCliente" column="id_cliente" type="integer"/>
+        <property name="instrucciones" column="instrucciones" type="string"/>
+        <property name="material" column="material" type="string"/>
+        <property name="observaciones" column="observaciones" type="string"/>
+        <property name="odAdc" column="od_adc" type="string" length="6"/>
+        <property name="odAdi" column="od_adi" type="string" length="6"/>
+        <property name="odAv" column="od_av" type="string" length="3"/>
+        <property name="odCil" column="od_cil" type="string" length="6"/>
+        <property name="odEje" column="od_eje" type="string" length="3"/>
+        <property name="odEsf" column="od_esf" type="string" length="6"/>
+        <property name="odPrisma" column="od_prisma" type="string"/>
+        <property name="odPrismaV" column="od_prisma_v" type="string"/>
+        <property name="oiAdc" column="oi_adc" type="string" length="6"/>
+        <property name="oiAdi" column="oi_adi" type="string" length="6"/>
+        <property name="oiAv" column="oi_av" type="string" length="3"/>
+        <property name="oiCil" column="oi_cil" type="string" length="6"/>
+        <property name="oiEje" column="oi_eje" type="string" length="3"/>
+        <property name="oiEsf" column="oi_esf" type="string" length="6"/>
+        <property name="oiPrisma" column="oi_prisma" type="string"/>
+        <property name="oiPrismaV" column="oi_prisma_v" type="string"/>
+        <property name="ojo" column="ojo" type="character"/>
+        <property name="problema" column="problema" type="string"/>
+        <property name="idResponsable" column="resp" type="string" length="5"/>
+        <property name="usoAnteojos" column="s_uso_anteojos" type="character"/>
+        <property name="tipo" column="tipo" type="character"/>
+        <property name="tratamientos" column="tratamientos" type="string"/>
+    </class>
+</hibernate-mapping>

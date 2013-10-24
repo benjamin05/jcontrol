@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="mx.com.lux.control.trabajos.data.vo.CondicionIcGenerico" schema="public" table="condicion_ic_gener">
+        <composite-id>
+            <key-property name="idConvenio" column="id_convenio" type="string" length="5"/>
+            <key-property name="idGenerico" column="id_generico" type="string" length="1"/>
+        </composite-id>
+        <property name="porcentajeDescuento" column="porcentaje_descto" type="java.math.BigDecimal"/>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,2 @@
+#parse("macros.vm")
+C1Val=1%#altnull(${trabajo.rx})%|C2Val=2%#altnull(${idSucursalOrigen})%|C3Val=3%#altnull(${trabajo.externo})%|#parse("acuse-envio-externo-cliente.vm")#parse("acuse-envio-externo-examen.vm")#parse("acuse-envio-externo-receta.vm")#parse("acuse-envio-externo-nota_venta.vm")#parse("acuse-envio-externo-poliza.vm")#parse("acuse-envio-externo-forma-contacto.vm")

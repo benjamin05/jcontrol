@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="mx.com.lux.control.trabajos.data.vo.Terminal" table="pos" schema="public">
+		<id name="idTerminal" column="id_terminal" type="string" />
+		<property name="idSucursal" column="id_suc" type="java.lang.Integer" />
+		<property name="idBancoDep" column="id_banco_dep" type="java.lang.Integer" />
+		<property name="descripcion" column="descripcion" type="string" />
+		<property name="afiliacion" column="afiliacion" type="string" />
+		<property name="promocion" column="promocion" type="boolean" />
+		<property name="numero" column="numero" type="string" />
+	</class>
+</hibernate-mapping>

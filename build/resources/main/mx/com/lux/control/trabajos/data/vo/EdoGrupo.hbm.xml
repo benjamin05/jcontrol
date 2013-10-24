@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="mx.com.lux.control.trabajos.data.vo.EdoGrupo" table="jb_edo_grupo">
+        <id name="id" type="integer">
+            <column name="id_edo_grupo"/>
+            <generator class="sequence">
+                <param name="sequence">jb_edo_grupo_id_edo_grupo_seq</param>
+            </generator>
+        </id>
+        <property name="descripcion" type="string">
+            <column name="descripcion_grupo"/>
+        </property>
+        <set name="estados" table="jb_edo_relacion">
+            <key column="id_edo_grupo"/>
+            <many-to-many column="id_edo" class="mx.com.lux.control.trabajos.data.vo.JbEstado"/>
+        </set>
+    </class>
+</hibernate-mapping>

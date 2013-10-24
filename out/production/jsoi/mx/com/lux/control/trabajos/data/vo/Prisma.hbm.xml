@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="mx.com.lux.control.trabajos.data.vo.Prisma" schema="public" table="prismas">
+        <id name="id" column="id_prisma" type="int"/>
+        <property name="prisma" column="prisma" type="string"/>
+        <property name="descripcion" column="descr" type="string"/>
+        <property name="idSync" column="id_sync" type="character"/>
+        <property name="fechaModificacion" column="fecha_mod" type="date"/>
+        <property name="idMod" column="id_mod" type="string"/>
+        <many-to-one name="sucursal" column="id_sucursal" class="mx.com.lux.control.trabajos.data.vo.Sucursal" update="false" fetch="select" lazy="false"/>
+    </class>
+</hibernate-mapping>

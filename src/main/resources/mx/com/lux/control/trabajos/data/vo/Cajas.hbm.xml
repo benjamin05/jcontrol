@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 6/09/2011 02:19:06 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="mx.com.lux.control.trabajos.data.vo.Cajas" table="cajas"
+		schema="public">
+		<id name="idCaja" type="int">
+			<column name="id_caja" />
+			<generator class="sequence">
+				<param name="sequence">cajas_seq</param>
+			</generator>
+		</id>
+		<property name="idSucursal" type="int">
+			<column name="id_sucursal" not-null="true" />
+		</property>
+		<property name="descr" type="string">
+			<column name="descr" />
+		</property>
+		<property name="impFactura" type="string">
+			<column name="imp_factura" not-null="true" />
+		</property>
+		<property name="impTicket" type="string">
+			<column name="imp_ticket" not-null="true" />
+		</property>
+		<property name="impReporte" type="string">
+			<column name="imp_reporte" not-null="true" />
+		</property>
+		<property name="letraAscii" type="int">
+			<column name="letra_ascii" not-null="true" />
+		</property>
+		<property name="numFactura" type="int">
+			<column name="num_factura" not-null="true" />
+		</property>
+		<property name="cajero" type="string">
+			<column name="cajero" length="13" />
+		</property>
+	</class>
+</hibernate-mapping>

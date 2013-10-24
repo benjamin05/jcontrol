@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="mx.com.lux.control.trabajos.data.vo.JbSobre" table="jb_sobres" schema="public">
+        <id name="id" column="id" type="integer">
+            <generator class="sequence">
+                <param name="sequence">jb_sobres_id_seq</param>
+            </generator>
+        </id>
+        <property name="folioSobre" column="folio_sobre" type="string"/>
+        <property name="dest" column="dest" type="string"/>
+        <property name="emp" column="emp" type="string" length="5"/>
+        <property name="area" column="area" type="string"/>
+        <property name="contenido" column="contenido" type="string"/>
+        <property name="idViaje" column="id_viaje" type="string" length="3"/>
+        <property name="fechaEnvio" column="fecha_envio" type="java.util.Date" length="13"/>
+        <property name="fecha" column="fecha" type="java.sql.Timestamp" length="35"/>
+        <property name="idMod" column="id_mod" type="string" length="13"/>
+        <property name="rx" column="rx" type="string"/>
+    </class>
+</hibernate-mapping>

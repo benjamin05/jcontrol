@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/09/2011 02:50:16 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="mx.com.lux.control.trabajos.data.vo.Nomina" table="nomina"
+		schema="public">
+		<id name="idPedido" type="int">
+			<column name="id_pedido" />
+			<generator class="sequence">
+				<param name="sequence">nomina_id_pedido_seq</param>
+			</generator>
+		</id>
+		<property name="idFactura" type="string">
+			<column name="id_factura" />
+		</property>
+		<property name="factura" type="string">
+			<column name="factura" />
+		</property>
+		<property name="idEmpleado" type="string">
+			<column name="id_empleado" />
+		</property>
+		<many-to-one name="acuse"
+			class="mx.com.lux.control.trabajos.data.vo.Acuses" fetch="select">
+			<column name="id_acuse" precision="131089" scale="0" />
+		</many-to-one>
+		<property name="idEmp" type="string">
+			<column name="id_emp" />
+		</property>
+		<property name="empleado" type="string">
+			<column name="empleado" />
+		</property>
+		<property name="idEmpresa" type="string">
+			<column name="id_empresa" />
+		</property>
+		<property name="idParentesco" type="string">
+			<column name="id_parentesco" />
+		</property>
+		<property name="pagos" type="string">
+			<column name="pagos" />
+		</property>
+		<property name="solicitud" type="string">
+			<column name="solicitud" />
+		</property>
+		<property name="autorizacion" type="string">
+			<column name="autorizacion" />
+		</property>
+		<property name="fechaSolicitud" type="timestamp">
+			<column name="fecha_solicitud" length="29" />
+		</property>
+		<property name="fechaAutorizacion" type="timestamp">
+			<column name="fecha_autorizacion" length="29" />
+		</property>
+		<property name="observaciones" type="string">
+			<column name="observaciones" />
+		</property>
+		<property name="fechaMod" type="timestamp">
+			<column name="fecha_mod" length="29" />
+		</property>
+	</class>
+</hibernate-mapping>

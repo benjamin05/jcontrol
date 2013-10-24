@@ -1,0 +1,12 @@
+package mx.com.lux.control.trabajos.bussiness.service.impresora;
+
+public enum TipoImpresion {
+	NORMAL,
+	ENFATIZADO,
+	DOUBLE_ALTURA,
+	DOBLEALTURA_ENFATIZADO,
+	DOBLEANCHURA,
+	DOBLEANCHURA_ENFATIZADO,
+	DOBLEALTURA_DOBLEANCHURA,
+	DOBLEALTURA_DOBLEANCHURA_ENFATIZADO
+}

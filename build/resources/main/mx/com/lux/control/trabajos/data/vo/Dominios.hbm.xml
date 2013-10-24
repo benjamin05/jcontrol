@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 6/09/2011 02:19:06 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="mx.com.lux.control.trabajos.data.vo.Dominios" table="dominios" schema="public">
+		<id name="idDominio" type="int">
+			<column name="id_dominio" />
+			<generator class="sequence">
+				<param name="sequence">dominios_id_dominio_seq</param>
+			</generator>
+		</id>
+		<property name="nombre" type="string">
+        	<column name="nombre" />
+		</property>
+		<property name="fechaMod" type="timestamp">
+        	<column name="fecha_mod" length="29" />
+		</property>
+    </class>
+</hibernate-mapping>

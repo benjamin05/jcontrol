@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="mx.com.lux.control.trabajos.data.vo" schema="public">
+    <class name="Polizas" table="polizas">
+        <id name="idPoliza" type="int">
+            <column name="id_poliza"/>
+            <generator class="sequence">
+                <param name="sequence">polizas_id_poliza_seq</param>
+            </generator>
+        </id>
+        <property name="idFactura" type="string">
+            <column name="id_factura"/>
+        </property>
+        <property name="idCliente" type="integer">
+            <column name="id_cliente"/>
+        </property>
+        <property name="noPoliza" type="integer">
+            <column name="no_poliza"/>
+        </property>
+        <property name="factura" type="string">
+            <column name="factura"/>
+        </property>
+        <property name="fechaMod" type="timestamp">
+            <column name="fecha_mod" length="29"/>
+        </property>
+        <property name="facturaVenta" type="string">
+            <column name="factura_venta"/>
+        </property>
+        <property name="fechaVenta" type="date">
+            <column name="fecha_venta" length="13"/>
+        </property>
+        <property name="fechaEntrega" type="timestamp">
+            <column name="fecha_entrega" length="29"/>
+        </property>
+        <property name="vigencia" type="date">
+            <column name="vigencia" length="13"/>
+        </property>
+        <property name="status" type="string">
+            <column name="status"/>
+        </property>
+        <property name="fechaCan" type="timestamp">
+            <column name="fecha_can" length="29"/>
+        </property>
+        <property name="idSucursal" type="integer">
+            <column name="id_sucursal"/>
+        </property>
+        <property name="idMod" type="string">
+            <column name="id_mod"/>
+        </property>
+        <bag name="detalles" table="polizas_det">
+            <key column="id_poliza"/>
+            <one-to-many class="PolizasDetalle"/>
+        </bag>
+    </class>
+</hibernate-mapping>

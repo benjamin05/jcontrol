@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="mx.com.lux.control.trabajos.data.vo" schema="public">
+    <class name="FormaContacto" table="forma_contacto">
+        <id name="rx" column="rx" type="string"/>
+        <property name="idCliente" column="id_cliente" type="integer"/>
+        <property name="contacto" column="contacto" type="string"/>
+        <property name="observaciones" column="observaciones" type="string"/>
+        <many-to-one name="tipoContacto" class="mx.com.lux.control.trabajos.data.vo.TipoContacto"
+                     column="id_tipo_contacto" insert="true" update="true" cascade="none" not-null="true" lazy="false"/>
+        <property name="fechaMod" column="fecha_mod" type="timestamp"/>
+        <property name="idSucursal" column="id_sucursal" type="integer"/>
+    </class>
+</hibernate-mapping>
+

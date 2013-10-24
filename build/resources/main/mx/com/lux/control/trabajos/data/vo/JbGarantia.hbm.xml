@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="mx.com.lux.control.trabajos.data.vo.JbGarantia" table="jb_garantia">
+        <id name="id" column="id_garantia" type="int">
+        </id>
+        <property name="idCliente" column="id_cliente" type="string" length="10" />
+        <property name="cliente" column="cliente" type="string" length="50" />
+        <property name="razon" column="razon" type="string" />
+        <property name="condicion" column="condicion" type="string" />
+        <property name="armazon" column="armazon" type="string" length="10" />
+        <property name="color" column="color" type="string" length="10" />
+        <property name="sucursal" column="suc" type="string" length="5" />
+        <property name="factura" column="factura" type="string" length="6" />
+        <property name="fechaFactura" column="fecha_factura" type="java.util.Date" length="13" />
+        <property name="empleado" column="emp" type="string" length="5" />
+        <property name="fechaPromesa" column="fecha_prom" type="java.util.Date" length="13" />
+        <property name="fecha" column="fecha" type="java.sql.Timestamp" length="35" />
+        <property name="tipoGarantia" column="tipo_gar" type="string" length="10" />
+        <property name="dejo" column="dejo" type="string" />
+        <property name="idMod" column="id_mod" type="string" length="13" />
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 21/07/2011 02:01:22 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="mx.com.lux.control.trabajos.data.vo.JbPagoExtra"
+		table="jb_pagos_ext">
+		<id name="idPago" type="int">
+			<column name="id_pago" />
+			<generator class="sequence">
+				<param name="sequence">jb_pagos_ext_id_pago_seq</param>
+			</generator>
+		</id>
+		<property name="factura" type="java.lang.String">
+			<column name="factura" not-null="true" />
+		</property>
+		<property name="idFormaPago" type="string">
+			<column name="id_forma_pago" length="2" />
+		</property>
+		<property name="idBanco" type="string">
+			<column name="id_banco" length="40" />
+		</property>
+		<property name="refer" type="string">
+			<column name="refer" length="18" />
+		</property>
+		<property name="monto" type="mx.com.lux.control.trabajos.data.vo.MoneyAdapter" access="property" column="monto" update="false" insert="true" />
+		<property name="fecha" type="java.sql.Timestamp">
+			<column name="fecha" length="35" not-null="true" />
+		</property>
+		<property name="idEmpleado" type="java.lang.String">
+			<column name="id_empleado" length="5" />
+		</property>
+		<property name="idFPago" type="java.lang.String">
+			<column name="id_f_pago" length="5" />
+		</property>
+		<property name="claveP" type="string">
+			<column name="clave_p" />
+		</property>
+		<property name="refClave" type="string">
+			<column name="ref_clave" />
+		</property>
+		<property name="idBancoEmi" type="string">
+			<column name="id_banco_emi" length="2" />
+		</property>
+		<property name="idTerm" type="string">
+			<column name="id_term" length="30" />
+		</property>
+		<property name="idPlan" type="string">
+			<column name="id_plan" length="20" />
+		</property>
+		<property name="confirm" type="boolean">
+			<column name="confirm" not-null="true" />
+		</property>
+		<property name="idMod" type="string">
+			<column name="id_mod" />
+		</property>
+	</class>
+</hibernate-mapping>

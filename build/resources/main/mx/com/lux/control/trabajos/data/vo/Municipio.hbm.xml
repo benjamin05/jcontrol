@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="mx.com.lux.control.trabajos.data.vo.Municipio"
+		table="munici">
+		<composite-id name="id"
+			class="mx.com.lux.control.trabajos.data.vo.MunicipioId">
+			<key-property name="idEstado" type="string">
+				<column name="id_estado" length="2" />
+			</key-property>
+			<key-property name="idLocalidad" type="string">
+				<column name="id_localidad" length="3" />
+			</key-property>
+		</composite-id>
+		<many-to-one name="estadoRepublica"
+			class="mx.com.lux.control.trabajos.data.vo.EstadoRepublica" update="false"
+			insert="false" fetch="select" lazy="false">
+			<column name="id_estado" />
+		</many-to-one>
+		<property name="nombre" type="string">
+			<column name="nombre" />
+		</property>
+		<property name="rango1" type="java.lang.String">
+			<column name="rango1" length="5" />
+		</property>
+		<property name="rango2" type="java.lang.String">
+			<column name="rango2" length="5" />
+		</property>
+		<property name="rango3" type="java.lang.String">
+			<column name="rango3" length="5" />
+		</property>
+		<property name="rango4" type="java.lang.String">
+			<column name="rango4" length="5" />
+		</property>
+	</class>
+</hibernate-mapping>

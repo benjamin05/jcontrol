@@ -1,0 +1,1 @@
+${rx}|TE|${empleado.idEmpleado.trim()}|EXT|${timestamp}|${empleado.idEmpleado.trim()}|${empleado.nombreEmpleado}|${empleado.apPatEmpleado}|${empleado.apMatEmpleado}|${empleado.idPuesto}|

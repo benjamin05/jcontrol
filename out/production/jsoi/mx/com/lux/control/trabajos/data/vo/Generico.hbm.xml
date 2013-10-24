@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="mx.com.lux.control.trabajos.data.vo.Generico" schema="public" table="genericos" dynamic-update="false" dynamic-insert="false">
+        <id name="id" column="id_generico" type="character" length="1" />
+        <property name="descripcion" column="descripcion_generico" type="string" />
+        <property name="idSync" column="id_sync" type="character" length="1" />
+        <property name="fechaModificacion" column="fecha_mod" type="date" />
+        <property name="idMod" column="id_mod" type="string" length="13" />
+        <property name="idSucursal" column="id_sucursal" type="integer" />
+        <property name="surte" column="surte" type="string" />
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 6/09/2011 02:19:06 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="mx.com.lux.control.trabajos.data.vo.InstitucionIc" table="institucion_ic" schema="public">
+        <id name="idConvenio" type="string">
+            <column name="id_convenio" length="5" />
+            <generator class="assigned" />
+        </id>
+        <property name="inicialesIc" type="string">
+            <column name="iniciales_ic" length="16" />
+        </property>
+        <property name="razonSocial" type="string">
+            <column name="razon_social" />
+        </property>
+        <property name="tipoConvenio" type="java.lang.Character">
+            <column name="tipo_convenio" length="1" />
+        </property>
+        <property name="idConvenioPrinci" type="string">
+            <column name="id_convenio_princi" length="5" />
+        </property>
+        <property name="porcentajeAlTope" type="java.lang.Double">
+            <column name="porcentaje_al_tope" precision="17" scale="17" />
+        </property>
+        <property name="memoCondiciones" type="string">
+            <column name="memo_condiciones" />
+        </property>
+        <property name="estatusConvenio" type="java.lang.Character">
+            <column name="estatus_convenio" length="1" />
+        </property>
+        <property name="aceptarVales" type="java.lang.Boolean">
+            <column name="aceptar_vales" />
+        </property>
+        <property name="FAcumularTope" type="boolean">
+            <column name="f_acumular_tope" not-null="true" />
+        </property>
+        <property name="FRestricLente" type="boolean">
+            <column name="f_restric_lente" not-null="true" />
+        </property>
+        <property name="idSync" type="char">
+            <column name="id_sync" length="1" not-null="true" />
+        </property>
+        <property name="fechaMod" type="timestamp">
+            <column name="fecha_mod" length="29" not-null="true" />
+        </property>
+        <property name="idMod" type="string">
+            <column name="id_mod" length="13" not-null="true" />
+        </property>
+        <property name="idSucursal" type="int">
+            <column name="id_sucursal" not-null="true" />
+        </property>
+        <property name="mejorPrecio" type="java.lang.Boolean">
+            <column name="mejor_precio" />
+        </property>
+        <property name="topeAnt" type="java.lang.String">
+            <column name="tope_ant"/>
+        </property>
+    </class>
+</hibernate-mapping>

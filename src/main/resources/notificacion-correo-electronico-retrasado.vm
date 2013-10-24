@@ -1,0 +1,26 @@
+Estimado(a) ${cliente}:
+
+#if( ${esGrupo} )
+Ópticas Lux le notifica que sus trabajos no podrán ser entregados​ en la fecha comprometi​da.
+#elseif( !${esGrupo} )
+Ópticas Lux le notifica que su orden de trabajo ${rx} no podrá ser entregada en la fecha comprometi​da.
+#end
+
+Uno de nuestros colaboradores se comunicará con usted, para detallar la entrega.
+
+Le agradecemo​s su comprensió​n.
+
+Atentament​e
+Opticas Lux
+
+${sucursal.nombre}
+${sucursal.direccion}
+${sucursal.colonia}
+${sucursal.cp}
+${sucursal.telefonos}
+
+www.lux.mx​
+Atención a Clientes.
+01 800 9000 LUX
+01 800 9000 589
+clientecon​fianza@lux​.mx

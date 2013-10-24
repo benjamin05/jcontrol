@@ -1,0 +1,1 @@
+id_acuseVal=${idAcuse}|id_sucVal=${poliza.idSucursal}|id_facturaVal=${poliza.facturaVenta}|factura_polVal=${poliza.factura}|fecha_ventaVal=${poliza.fechaVenta}|id_polizaVal=${poliza.noPoliza}|
