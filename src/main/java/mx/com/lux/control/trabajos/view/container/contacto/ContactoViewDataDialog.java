@@ -395,7 +395,7 @@ public class ContactoViewDataDialog extends Dialog {
 									if ( rx.startsWith( "F" ) ) {
 										// Solo generamos el acuse para el RX del grupo
 										try {
-											contactoViewService.registraContactoSMS( rx );
+											contactoViewService.registraContactoSMS( rx, false );
 										} catch ( ApplicationException ex ) {
 											Status status = new Status( IStatus.ERROR, "JSOI", 0, "Error al registrar contacto SMS", null );
 											ErrorDialog.openError( shell, "Error", "Error", status );
@@ -427,7 +427,7 @@ public class ContactoViewDataDialog extends Dialog {
 					} else {
 						if ( esContactoSMS ) {
 							try {
-								contactoViewService.registraContactoSMS( currentJb.getRx() );
+								contactoViewService.registraContactoSMS( currentJb.getRx(), false );
 								MessageDialog.openInformation( getShell(), strInfo, TrabajosPropertyHelper.getProperty( "trabajos.msg.sms.info" ) );
 							} catch ( ApplicationException ex ) {
 								Status status = new Status( IStatus.ERROR, "JSOI", 0, "Error al registrar contacto SMS", null );

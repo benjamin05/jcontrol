@@ -9,10 +9,8 @@ import mx.com.lux.control.trabajos.data.dao.PolizaDAO;
 import mx.com.lux.control.trabajos.data.dao.envio.SucursalDAO;
 import mx.com.lux.control.trabajos.data.dao.trabajo.JbTrackDAO;
 import mx.com.lux.control.trabajos.data.dao.trabajo.TrabajoDAO;
-import mx.com.lux.control.trabajos.data.vo.Acuses;
-import mx.com.lux.control.trabajos.data.vo.Empleado;
-import mx.com.lux.control.trabajos.data.vo.JbExterno;
-import mx.com.lux.control.trabajos.data.vo.Sucursal;
+import mx.com.lux.control.trabajos.data.vo.*;
+import mx.com.lux.control.trabajos.exception.DAOException;
 import mx.com.lux.control.trabajos.exception.ServiceException;
 import mx.com.lux.control.trabajos.util.constants.Constants;
 import mx.com.lux.control.trabajos.view.Session;
@@ -95,5 +93,11 @@ public class RecepcionBusinessImpl implements RecepcionBusiness {
 		log.debug( "Acuse recepcion externo: " + acuse );
 		return acuse;
 	}
+
+
+    public JbLlamada obtenerLlamadaPorRx(String rx) throws DAOException {
+        return trabajoDAO.findJbLlamadaById( rx );
+    }
+
 
 }

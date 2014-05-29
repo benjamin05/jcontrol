@@ -35,7 +35,7 @@ public interface ContactoViewService {
 
 	FormaContacto obtenFormaContactoDeRx( String rx );
 
-	void registraContactoSMS( String rx ) throws ApplicationException;
+	void registraContactoSMS( String rx, Boolean recepcion ) throws ApplicationException;
 
 	void enviarNotificacionCorreoElectronico( final String rx ) throws ApplicationException;
 }

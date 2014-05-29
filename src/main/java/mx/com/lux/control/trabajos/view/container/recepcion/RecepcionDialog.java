@@ -1,25 +1,30 @@
 package mx.com.lux.control.trabajos.view.container.recepcion;
 
+import mx.com.lux.control.trabajos.bussiness.RecepcionBusiness;
+import mx.com.lux.control.trabajos.bussiness.service.contacto.ContactoViewService;
+import mx.com.lux.control.trabajos.bussiness.service.trabajo.JbGrupoService;
 import mx.com.lux.control.trabajos.bussiness.service.trabajo.RecetaService;
 import mx.com.lux.control.trabajos.bussiness.service.trabajo.SucursalService;
 import mx.com.lux.control.trabajos.bussiness.service.trabajo.TrabajoService;
-import mx.com.lux.control.trabajos.data.vo.Jb;
-import mx.com.lux.control.trabajos.data.vo.NotaVenta;
-import mx.com.lux.control.trabajos.data.vo.Receta;
-import mx.com.lux.control.trabajos.data.vo.Sucursal;
+import mx.com.lux.control.trabajos.data.vo.*;
 import mx.com.lux.control.trabajos.exception.ApplicationException;
+import mx.com.lux.control.trabajos.exception.DAOException;
 import mx.com.lux.control.trabajos.util.ApplicationUtils;
 import mx.com.lux.control.trabajos.util.ServiceLocator;
-import mx.com.lux.control.trabajos.util.constants.BeanNamesContext;
-import mx.com.lux.control.trabajos.util.constants.Constants;
-import mx.com.lux.control.trabajos.util.constants.GraphicConstants;
+import mx.com.lux.control.trabajos.util.constants.*;
 import mx.com.lux.control.trabajos.util.properties.ApplicationPropertyHelper;
+import mx.com.lux.control.trabajos.util.properties.ContactoPropertyHelper;
 import mx.com.lux.control.trabajos.util.properties.RecepcionPropertyHelper;
+import mx.com.lux.control.trabajos.util.properties.TrabajosPropertyHelper;
 import mx.com.lux.control.trabajos.view.Session;
 import mx.com.lux.control.trabajos.view.controltrabajos.ControlTrabajosWindowElements;
 import org.apache.commons.lang.StringUtils;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.Dialog;
+import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -31,27 +36,47 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.*;
 
+import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.List;
 
 public class RecepcionDialog extends Dialog {
 
 	private static final TrabajoService trabajoService;
 	private static final RecetaService recetaService;
 	private static final SucursalService sucursalService;
+    private static final ContactoViewService contactoViewService;
+    private static final JbGrupoService jbGrupoService;
 
+    @Resource
+    private RecepcionBusiness recepcionBusiness;
+
+    private ContactoView currentContactoView = new ContactoView();
+    private Jb currentJb = new Jb();
+    private boolean realizado = true;
 	private Integer idViaje;
 	private Jb jb;
 	private Shell shell;
 	private RecepcionDialog self;
+    private String rx;
+    private boolean grupo = false;
+    private List<Jb> listaTrabajosEnGrupo = new ArrayList<Jb>();
+    private JbLlamada currentJbLlamada = new JbLlamada();
+    private Empleado empleado = new Empleado();
+    private String strInfo;
 
 	static {
 		trabajoService = (TrabajoService) ServiceLocator.getBean( BeanNamesContext.BEAN_NAME_TRABAJO_SERVICE );
 		recetaService = (RecetaService) ServiceLocator.getBean( BeanNamesContext.BEAN_NAME_RECETA_SERVICE );
 		sucursalService = (SucursalService) ServiceLocator.getBean( BeanNamesContext.BEAN_NAME_SUCURSAL_SERVICE );
+        contactoViewService = (ContactoViewService) ServiceLocator.getBean( BeanNamesContext.BEAN_NAME_CONTACTO_SERVICE );
+        jbGrupoService = (JbGrupoService) ServiceLocator.getBean( BeanNamesContext.BEAN_NAME_JB_GRUPO );
 	}
 
-	public RecepcionDialog( Shell parentShell ) {
+	public RecepcionDialog( Shell parentShell, String rx ) {
 		super( parentShell );
+        this.rx = StringUtils.trimToEmpty(rx);
 		shell = parentShell;
 		self = this;
 	}
@@ -201,7 +226,8 @@ public class RecepcionDialog extends Dialog {
 			@Override
 			public void widgetSelected( SelectionEvent e ) {
 				try {
-					trabajoService.trabajoSatisfactorio( jb, idViaje );
+                    trabajoService.trabajoSatisfactorio( jb, idViaje );
+                    enviaSms();
 					parent.getShell().dispose();
 					ApplicationUtils.recargarDatosPestanyaVisible();
 				} catch ( ApplicationException e1 ) {
@@ -235,4 +261,116 @@ public class RecepcionDialog extends Dialog {
 		super.configureShell( newShell );
 		newShell.setText( RecepcionPropertyHelper.getProperty( "recepcion.dialog.title" ) );
 	}
+
+
+    public void enviaSms() throws DAOException {
+        String estado = "";
+        if ( realizado ) {
+
+            boolean esContactoSMS = false;
+            if ( esTipoContactoSMS( rx ) ) {
+                esContactoSMS = true;
+                strInfo = TrabajosPropertyHelper.getProperty("trabajos.msg.sms.envio");
+            }
+
+            estado = ContactoPropertyHelper.getProperty( "contacto.estado.entregar.ae" );
+
+            currentJb.setNumLlamada( currentJb.getNumLlamada() != null ? ( currentJb.getNumLlamada() + 1 ) : 1 );
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(new Date()); // Configuramos la fecha que se recibe
+            calendar.add(Calendar.DAY_OF_YEAR, 7);
+            currentJb.setVolverLlamar(calendar.getTime());
+
+            if ( rx.startsWith( RxConstants.TIPO_GRUPO_F ) ) {
+                try{
+                listaTrabajosEnGrupo = jbGrupoService.obtenTrabajosEnGrupo( rx );
+                grupo = true;
+                } catch ( ApplicationException e1 ) {
+                    e1.printStackTrace();
+                }
+            }
+            if ( grupo ) {
+                try{
+                currentJbLlamada = trabajoService.findJbLlamadaById( rx );
+                } catch ( ApplicationException e ) { System.out.println( e );}
+                if ( listaTrabajosEnGrupo != null && !listaTrabajosEnGrupo.isEmpty() ) {
+                    Object[] objRealizado = new Object[listaTrabajosEnGrupo.size() + 2];
+                    objRealizado[0] = currentJb;
+                    objRealizado[1] = currentJbLlamada;
+
+                    if ( esContactoSMS ) {
+                        java.util.List<Jb> listaTrabajosContacto = new ArrayList<Jb>();
+                        listaTrabajosContacto.add( currentJb );
+                        listaTrabajosContacto.addAll( listaTrabajosEnGrupo );
+                        for ( Jb trabajoContacto : listaTrabajosContacto ) {
+                            String rx = trabajoContacto.getRx();
+                            if ( rx.startsWith( "F" ) ) {
+                                // Solo generamos el acuse para el RX del grupo
+                                try {
+                                    contactoViewService.registraContactoSMS( rx, true );
+                                } catch ( ApplicationException ex ) {
+                                    Status status = new Status( IStatus.ERROR, "JSOI", 0, "Error al registrar contacto SMS", null );
+                                    ErrorDialog.openError(shell, "Error", "Error", status);
+                                }
+
+                            }
+                        }
+                        MessageDialog.openInformation(getShell(), StringUtils.defaultIfBlank(strInfo, ""), TrabajosPropertyHelper.getProperty("trabajos.msg.sms.info"));
+                    }
+
+                    int i = 2;
+                    empleado = (Empleado) Session.getAttribute( Constants.PARAM_USER_LOGGED );
+                    for ( Jb jb : listaTrabajosEnGrupo ) {
+                        JbTrack jbTrack = new JbTrack();
+                        jbTrack.setRx( jb.getRx() );
+                        jbTrack.setEstado( estado );
+                        jbTrack.setObservaciones( StringUtils.defaultIfBlank( strInfo, "" ) );
+                        jbTrack.setEmpleado( empleado.getIdEmpleado() );
+                        jbTrack.setIdViaje( null );
+                        jbTrack.setFecha( new Date() );
+                        jbTrack.setIdMod( "0" );
+                        objRealizado[i++] = jbTrack;
+                    }
+                    try {
+                        jbGrupoService.saveGrupoTrackContactoRealizado(objRealizado);
+                    } catch ( ApplicationException e ) {
+                        System.out.println("Error al guardar Grupo Track Contacto realizado: " + e.getMessage());
+                    }
+                }
+            } else {
+                if ( esContactoSMS ) {
+                    try {
+                        contactoViewService.registraContactoSMS( rx, true );
+                        MessageDialog.openInformation( getShell(), strInfo, TrabajosPropertyHelper.getProperty( "trabajos.msg.sms.info" ) );
+                    } catch ( ApplicationException ex ) {
+                        Status status = new Status( IStatus.ERROR, "JSOI", 0, "Error al registrar contacto SMS", null );
+                        ErrorDialog.openError( shell, "Error", "Error", status );
+                    }
+                }
+                JbTrack currentJbt = new JbTrack();
+                currentJbt.setRx( rx );
+                currentJbt.setEstado( estado );
+                currentJbt.setObservaciones( StringUtils.defaultIfBlank( strInfo, "" ) );
+                currentJbt.setEmpleado( empleado.getIdEmpleado() );
+                currentJbt.setIdViaje( null );
+                currentJbt.setFecha( new Date() );
+                currentJbt.setIdMod( "0" );
+                Object[] objRealizado = { currentJbLlamada, currentJbt, currentJb };
+                saveContactoTrackJb(objRealizado);
+            }
+        }
+    }
+
+    private boolean esTipoContactoSMS( final String rx ) {
+        FormaContacto formaContacto = contactoViewService.obtenFormaContactoDeRx( rx );
+        return ( formaContacto != null ) && ( formaContacto.getTipoContacto().getIdTipoContacto() == 3 );
+    }
+
+    private void saveContactoTrackJb( Object[] o ) {
+        try {
+            trabajoService.deleteInsertUpdate( o );
+        } catch ( ApplicationException e ) {
+            e.printStackTrace();
+        }
+    }
 }

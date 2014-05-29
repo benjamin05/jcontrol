@@ -151,12 +151,12 @@ public class ContactoViewServiceImpl implements ContactoViewService {
     }
 
     @Override
-    public void registraContactoSMS( final String rx ) throws ApplicationException {
+    public void registraContactoSMS( final String rx, Boolean recepcion ) throws ApplicationException {
         try {
             Acuses acuse = new Acuses();
             acuse.setIdTipo( "sms" );
             acuse.setFechaCarga( new Date() );
-            acuse.setContenido( crearContenidoAcuseSms( rx ) );
+            acuse.setContenido( crearContenidoAcuseSms( rx, recepcion ) );
             contactoViewDAO.save( acuse );
             Runtime.getRuntime().exec( SHELL_CMD );
         } catch ( DAOException e ) {
@@ -166,11 +166,15 @@ public class ContactoViewServiceImpl implements ContactoViewService {
         }
     }
 
-    private String crearContenidoAcuseSms( final String rx ) throws DAOException {
+    private String crearContenidoAcuseSms( final String rx, Boolean recepcion ) throws DAOException {
         Empleado empleado = ( Empleado ) Session.getAttribute( Constants.PARAM_USER_LOGGED );
         FormaContacto formaContacto = obtenFormaContactoDeRx( rx );
         Jb trabajo = trabajoDAO.findById( rx );
         JbLlamada llamada = trabajoDAO.findJbLlamadaById( rx );
+        if(recepcion ){
+          llamada = new JbLlamada();
+          llamada.setTipo("ENTREGAR");
+        }
 
         GParametro gParametro = null;
         if ( "ENTREGAR".equalsIgnoreCase( llamada.getTipo().trim() ) && !trabajo.esGrupo() ) {

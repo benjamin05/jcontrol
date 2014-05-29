@@ -189,7 +189,7 @@ public class EditarFormaContactoDialog extends Dialog {
 		if ( formaContacto != null ) {
 			// Boolean tieneFormaContacto = true;
 			contacto.setText( formaContacto.getContacto() );
-			observaciones.setText( formaContacto.getObservaciones() );
+			observaciones.setText( StringUtils.trimToEmpty(formaContacto.getObservaciones()) );
 			for ( int i = 0; i < tipoContacto.getItems().length; i++ ) {
 				String combo = tipoContacto.getItem( i );
 				if ( combo.equalsIgnoreCase( formaContacto.getTipoContacto().getDescripcion().trim() ) ) {

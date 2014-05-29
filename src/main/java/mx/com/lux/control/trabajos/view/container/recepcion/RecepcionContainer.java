@@ -234,7 +234,7 @@ public class RecepcionContainer {
 				mb.open();
 			}
 
-			new RecepcionDialog( shell ).open();
+			new RecepcionDialog( shell, jb.getRx() ).open();
 		} catch ( ApplicationException e1 ) {
 			e1.printStackTrace();
 		} catch ( NumberFormatException nfe ) {
