@@ -275,10 +275,12 @@ public class RecepcionDialog extends Dialog {
 
             estado = ContactoPropertyHelper.getProperty( "contacto.estado.entregar.ae" );
 
+            empleado = (Empleado) Session.getAttribute( Constants.PARAM_USER_LOGGED );
+            currentJb = trabajoService.findById( rx );
             currentJb.setNumLlamada( currentJb.getNumLlamada() != null ? ( currentJb.getNumLlamada() + 1 ) : 1 );
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(new Date()); // Configuramos la fecha que se recibe
-            calendar.add(Calendar.DAY_OF_YEAR, 7);
+            calendar.add(Calendar.DAY_OF_YEAR, 8);
             currentJb.setVolverLlamar(calendar.getTime());
 
             if ( rx.startsWith( RxConstants.TIPO_GRUPO_F ) ) {
@@ -289,10 +291,10 @@ public class RecepcionDialog extends Dialog {
                     e1.printStackTrace();
                 }
             }
-            if ( grupo ) {
-                try{
+            try{
                 currentJbLlamada = trabajoService.findJbLlamadaById( rx );
-                } catch ( ApplicationException e ) { System.out.println( e );}
+            } catch ( ApplicationException e ) { System.out.println( e );}
+            if ( grupo ) {
                 if ( listaTrabajosEnGrupo != null && !listaTrabajosEnGrupo.isEmpty() ) {
                     Object[] objRealizado = new Object[listaTrabajosEnGrupo.size() + 2];
                     objRealizado[0] = currentJb;
@@ -319,7 +321,6 @@ public class RecepcionDialog extends Dialog {
                     }
 
                     int i = 2;
-                    empleado = (Empleado) Session.getAttribute( Constants.PARAM_USER_LOGGED );
                     for ( Jb jb : listaTrabajosEnGrupo ) {
                         JbTrack jbTrack = new JbTrack();
                         jbTrack.setRx( jb.getRx() );
@@ -367,6 +368,14 @@ public class RecepcionDialog extends Dialog {
     }
 
     private void saveContactoTrackJb( Object[] o ) {
+        try {
+            trabajoService.deleteInsertUpdate( o );
+        } catch ( ApplicationException e ) {
+            e.printStackTrace();
+        }
+    }
+
+    private void updateJbVolverLlamar( Object[] o ) {
         try {
             trabajoService.deleteInsertUpdate( o );
         } catch ( ApplicationException e ) {
