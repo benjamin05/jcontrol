@@ -176,7 +176,7 @@ public class RecepcionDialog extends Dialog {
 			jb = (Jb) Session.getAttribute( Constants.ITEM_SELECTED_JB );
 			idViaje = (Integer) Session.getAttribute( Constants.ITEM_SELECTED_ID_VIAJE );
 			txtCliente.setText( jb.getCliente() );
-			txtMaterial.setText( jb.getMaterial() );
+			txtMaterial.setText( StringUtils.trimToEmpty(jb.getMaterial()) );
 			txtFechaPromesa.setText( df.format( jb.getFechaPromesa() ) );
 
 			if ( jb.getFechaVenta() != null ) {
@@ -266,7 +266,6 @@ public class RecepcionDialog extends Dialog {
     public void enviaSms() throws DAOException {
         String estado = "";
         if ( realizado ) {
-
             boolean esContactoSMS = false;
             if ( esTipoContactoSMS( rx ) ) {
                 esContactoSMS = true;
@@ -283,18 +282,28 @@ public class RecepcionDialog extends Dialog {
             calendar.add(Calendar.DAY_OF_YEAR, 8);
             currentJb.setVolverLlamar(calendar.getTime());
 
-            if ( rx.startsWith( RxConstants.TIPO_GRUPO_F ) ) {
+            if ( StringUtils.trimToEmpty(currentJb.getIdGrupo()).startsWith(RxConstants.TIPO_GRUPO_F) ) {
                 try{
-                listaTrabajosEnGrupo = jbGrupoService.obtenTrabajosEnGrupo( rx );
+                listaTrabajosEnGrupo = jbGrupoService.obtenTrabajosEnGrupo( StringUtils.trimToEmpty(currentJb.getIdGrupo()) );
                 grupo = true;
                 } catch ( ApplicationException e1 ) {
                     e1.printStackTrace();
                 }
             }
+            Boolean grupoEntregado = false;
+            Jb jbGrupo = trabajoService.findById( StringUtils.trimToEmpty(currentJb.getIdGrupo()) );
+            if( jbGrupo != null && StringUtils.trimToEmpty(jbGrupo.getEstado().getIdEdo()).equalsIgnoreCase("RS") ){
+                grupoEntregado = true;
+            }
             try{
-                currentJbLlamada = trabajoService.findJbLlamadaById( rx );
+                currentJbLlamada = trabajoService.findJbLlamadaById( StringUtils.trimToEmpty(currentJb.getIdGrupo()) );
             } catch ( ApplicationException e ) { System.out.println( e );}
-            if ( grupo ) {
+            if ( grupo && grupoEntregado ) {
+                currentJb = trabajoService.findById( StringUtils.trimToEmpty(currentJb.getIdGrupo()) );
+                calendar = Calendar.getInstance();
+                calendar.setTime(new Date());
+                calendar.add(Calendar.DAY_OF_YEAR, 8);
+                currentJb.setVolverLlamar(calendar.getTime());
                 if ( listaTrabajosEnGrupo != null && !listaTrabajosEnGrupo.isEmpty() ) {
                     Object[] objRealizado = new Object[listaTrabajosEnGrupo.size() + 2];
                     objRealizado[0] = currentJb;

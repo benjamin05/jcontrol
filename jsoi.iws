@@ -3,16 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/recepcion/RecepcionDialog.java" afterPath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/recepcion/RecepcionDialog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/database.properties" afterPath="$PROJECT_DIR$/src/main/resources/database.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jsoi.iws" afterPath="$PROJECT_DIR$/jsoi.iws" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/release.properties" afterPath="$PROJECT_DIR$/src/main/resources/release.properties" />
     </list>
     <ignored path="jsoi.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" time="1401459022468" ignored="false" />
-    <file path="/database.properties" changelist="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" time="1401386754934" ignored="false" />
+    <file path="/Dummy.txt" changelist="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" time="1401803880393" ignored="false" />
+    <file path="/database.properties" changelist="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" time="1401729983225" ignored="false" />
     <file path="/RecepcionContainer.java" changelist="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" time="1401396928923" ignored="false" />
-    <file path="/ConsultaContainer.java" changelist="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" time="1401383714628" ignored="false" />
-    <file path="/RecepcionDialog.java" changelist="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" time="1401473336322" ignored="false" />
+    <file path="/ConsultaContainer.java" changelist="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" time="1401747890351" ignored="false" />
+    <file path="/RecepcionDialog.java" changelist="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" time="1401804269870" ignored="false" />
     <file path="/ContactoViewDataDialog.java" changelist="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" time="1401403495248" ignored="false" />
     <file path="/EditarFormaContactoDialog.java" changelist="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" time="1401391393694" ignored="false" />
     <file path="/ContactoContainer.java" changelist="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" time="1401397532235" ignored="false" />
@@ -39,42 +40,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint>
-        <option name="NOTIFY_CAUGHT" value="true" />
-        <option name="NOTIFY_UNCAUGHT" value="true" />
-        <option name="ENABLED" value="false" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint>
-        <option name="NOTIFY_CAUGHT" value="true" />
-        <option name="NOTIFY_UNCAUGHT" value="true" />
-        <option name="ENABLED" value="false" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint url="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/envio/EnvioServiceImpl.java" line="107" class="mx.com.lux.control.trabajos.bussiness.service.envio.EnvioServiceImpl" package="mx.com.lux.control.trabajos.bussiness.service.envio">
         <option name="ENABLED" value="true" />
@@ -121,8 +87,12 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/contacto/ContactoViewServiceImpl.java" line="183" class="mx.com.lux.control.trabajos.bussiness.service.contacto.ContactoViewServiceImpl" package="mx.com.lux.control.trabajos.bussiness.service.contacto">
-        <option name="ENABLED" value="true" />
+    </line_breakpoints>
+    <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
         <option name="REMOVE_AFTER_HIT" value="false" />
@@ -130,14 +100,30 @@
         <option name="SUSPEND" value="true" />
         <option name="COUNT_FILTER_ENABLED" value="false" />
         <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CONDITION_ENABLED" value="false" />
         <option name="CLASS_FILTERS_ENABLED" value="false" />
         <option name="INSTANCE_FILTERS_ENABLED" value="false" />
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-    </line_breakpoints>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+      <breakpoint>
+        <option name="NOTIFY_CAUGHT" value="true" />
+        <option name="NOTIFY_UNCAUGHT" value="true" />
+        <option name="ENABLED" value="false" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="false" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+    </breakpoint_any>
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -150,7 +136,45 @@
       <file leaf-file-name="RecepcionDialog.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/recepcion/RecepcionDialog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="282" column="48" selection-start="12608" selection-end="12608" vertical-scroll-proportion="0.7777778">
+            <state line="294" column="35" selection-start="13287" selection-end="13287" vertical-scroll-proportion="0.49632353">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConsultaContainer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/consulta/ConsultaContainer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="161" column="49" selection-start="7708" selection-end="7708" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PagingListener.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/paging/PagingListener.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="11" selection-start="615" selection-end="615" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConsultaPagingService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/paging/consulta/ConsultaPagingService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="123" selection-start="756" selection-end="756" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="database.properties" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/database.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="50" selection-start="103" selection-end="103" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -159,16 +183,7 @@
       <file leaf-file-name="ContactoViewDataDialog.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/contacto/ContactoViewDataDialog.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="228" column="58" selection-start="10310" selection-end="10352" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ContactoViewServiceImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/contacto/ContactoViewServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="153" column="16" selection-start="5804" selection-end="5804" vertical-scroll-proportion="0.0">
+            <state line="382" column="34" selection-start="15937" selection-end="15937" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -199,7 +214,6 @@
         <option value="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/impl/ExternoServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/externos/EntregaExternoDialog.java" />
         <option value="$PROJECT_DIR$/src/main/resources/ticket-envio-externo.vm" />
-        <option value="$PROJECT_DIR$/src/main/resources/database.properties" />
         <option value="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/trabajos/EditarFormaContactoDialog.java" />
         <option value="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/recepcion/RecepcionContainer.java" />
         <option value="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/RecepcionBusiness.java" />
@@ -207,6 +221,7 @@
         <option value="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/contacto/ContactoViewService.java" />
         <option value="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/contacto/ContactoViewDataDialog.java" />
         <option value="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/contacto/ContactoViewServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/database.properties" />
         <option value="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/recepcion/RecepcionDialog.java" />
       </list>
     </option>
@@ -239,7 +254,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+    <navigator proportions="" version="1" splitterProportion="0.5">
       <flattenPackages ProjectPane="true" />
       <showMembers />
       <showModules />
@@ -250,88 +265,7 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jsoi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jsoi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jcontrol" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jsoi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jcontrol" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jsoi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jcontrol" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jsoi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jcontrol" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="project.structure.last.edited" value="Project" />
@@ -346,9 +280,9 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -499,14 +433,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1280" height="672" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30592734" sideWeight="0.5600649" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4091778" sideWeight="0.49675325" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.40535372" sideWeight="0.49675325" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35756156" sideWeight="0.49756494" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.59082216" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -515,10 +448,11 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35146105" sideWeight="0.6764361" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39951378" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36444804" sideWeight="0.59082216" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36444804" sideWeight="0.5927342" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.332696" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30592734" sideWeight="0.5600649" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -588,110 +522,100 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/impl/RecepcionBusinessImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="101" column="50" selection-start="3643" selection-end="3647" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/ordenservicio/OrdenServicioDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="34" selection-start="1656" selection-end="1656" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/contacto/ContactoViewService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="9" selection-start="1477" selection-end="1477" vertical-scroll-proportion="0.5253165" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/impl/ExternoServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="163" column="71" selection-start="6973" selection-end="7028" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/RecepcionBusiness.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="27" selection-start="377" selection-end="377" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mx/com/lux/control/trabajos/resources/Application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="21" selection-start="3127" selection-end="3127" vertical-scroll-proportion="0.29007635">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/controltrabajos/ControlTrabajosWindowElements.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="136" selection-start="4004" selection-end="4004" vertical-scroll-proportion="0.36144578">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/consulta/ConsultaContainer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="111" column="61" selection-start="5395" selection-end="5395" vertical-scroll-proportion="0.5180723">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/util/properties/ContactoPropertyHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="25" selection-start="401" selection-end="401" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="17" column="25" selection-start="401" selection-end="401" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/mx/com/lux/control/trabajos/resources/Contacto.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="306" selection-end="306" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="9" column="0" selection-start="306" selection-end="306" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/recepcion/RecepcionContainer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="216" column="0" selection-start="8522" selection-end="8522" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="216" column="0" selection-start="8522" selection-end="8522" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/data/dao/trabajo/hbm/TrabajoDAOHBM.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="166" column="16" selection-start="8440" selection-end="8440" vertical-scroll-proportion="0.33333334">
-          <folding />
-        </state>
+        <state line="167" column="18" selection-start="8513" selection-end="8513" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/trabajo/TrabajoServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="148" column="28" selection-start="5565" selection-end="5565" vertical-scroll-proportion="0.3888889">
+        <state line="148" column="27" selection-start="5564" selection-end="5564" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/trabajo/JbGrupoServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="26" selection-start="1917" selection-end="1917" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/data/dao/trabajo/hbm/JbGrupoDAOHBM.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="66" column="22" selection-start="2744" selection-end="2744" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/data/dao/DAOSupport.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="489" column="16" selection-start="16058" selection-end="16058" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/data/vo/Jb.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="13" selection-start="397" selection-end="397" vertical-scroll-proportion="0.22140221">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/contacto/ContactoViewServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/paging/consulta/ConsultaPagingService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="153" column="16" selection-start="5804" selection-end="5804" vertical-scroll-proportion="0.0">
+        <state line="24" column="123" selection-start="756" selection-end="756" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/paging/PagingListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="11" selection-start="615" selection-end="615" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/contacto/ContactoViewDataDialog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="228" column="58" selection-start="10310" selection-end="10352" vertical-scroll-proportion="0.0">
+        <state line="382" column="34" selection-start="15937" selection-end="15937" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/consulta/ConsultaContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="161" column="49" selection-start="7708" selection-end="7708" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/database.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="50" selection-start="103" selection-end="103" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/contacto/ContactoViewServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="160" column="0" selection-start="6150" selection-end="6150" vertical-scroll-proportion="0.33333334">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/recepcion/RecepcionDialog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="282" column="48" selection-start="12608" selection-end="12608" vertical-scroll-proportion="0.7777778">
+        <state line="294" column="35" selection-start="13287" selection-end="13287" vertical-scroll-proportion="0.49632353">
           <folding />
         </state>
       </provider>
