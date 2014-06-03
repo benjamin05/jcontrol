@@ -500,7 +500,9 @@ public abstract class DAOSupport extends HibernateDaoSupport {
 					getSession().saveOrUpdate( o[i] );
 				}
 				if ( in[i].equals( DELETE ) ) {
-					getSession().delete( o[i] );
+                    if( o[i] != null ){
+                        getSession().delete( o[i] );
+                    }
 				}
 			}
 		} catch ( Exception e ) {

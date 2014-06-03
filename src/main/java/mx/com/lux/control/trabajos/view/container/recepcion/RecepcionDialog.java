@@ -347,7 +347,7 @@ public class RecepcionDialog extends Dialog {
                         System.out.println("Error al guardar Grupo Track Contacto realizado: " + e.getMessage());
                     }
                 }
-            } else {
+            } else if( !grupo ) {
                 if ( esContactoSMS ) {
                     try {
                         contactoViewService.registraContactoSMS( rx, true );
