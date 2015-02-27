@@ -287,6 +287,12 @@ public class EnvioServiceImpl implements EnvioService {
                 count++;
             }
 
+            SimpleDateFormat dateCodeBar = new SimpleDateFormat( "ddMM" );
+            String idSuc = "00000" + empleado.getSucursal().getIdSucursal();
+            idSuc = idSuc.substring(idSuc.length() - 5, idSuc.length());
+            String strViaje = "00" + jbViaje.getId().getIdViaje();
+            strViaje = strViaje.substring(strViaje.length() - 2, strViaje.length());
+            String barCode = strViaje + dateCodeBar.format(new Timestamp( System.currentTimeMillis())) + idSuc;
 
             // se agrega más contenido para acuse
             contenido = contenido + Constants.ID_SUCURSAL_VAL + equal + empleado.getSucursal().getIdSucursal() + pipe
@@ -362,7 +368,7 @@ public class EnvioServiceImpl implements EnvioService {
                 trabajoDAO.saveOrUpdateDeleteObjectList( obj, delObjects );
 
                 // se agrega contenido faltante con idAcuse guardado previamente
-                contenido = acuse.getContenido() + Constants.ID_ACUSE_VAL + equal + acuse.getIdAcuse() + pipe + Constants.ENVIO_VAL + equal + jbViaje.getId().getIdViaje() + pipe;
+                contenido = acuse.getContenido() + Constants.ID_ACUSE_VAL + equal + acuse.getIdAcuse() + pipe + Constants.ENVIO_VAL + equal + barCode + pipe;
                 acuse.setContenido( contenido );
 
                 trabajoDAO.save( acuse );

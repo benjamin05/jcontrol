@@ -410,6 +410,19 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 		SimpleDateFormat sdf = new SimpleDateFormat( "dd-MM-yyyy" );
 		ImpresoraTM88 ti = new ImpresoraTM88( nombreArchivo );
 		// Inicializar
+
+
+        // Codigo barra inicio escaneo
+        SimpleDateFormat dateCodeBar = new SimpleDateFormat( "ddMM" );
+        String idSuc = "00000" + sucursal.idSucursal();
+        idSuc = idSuc.substring(idSuc.length() - 5, idSuc.length());
+        String strViaje = "00" + idViaje;
+        strViaje = strViaje.substring(strViaje.length() - 2, strViaje.length());
+        String barCode = strViaje + dateCodeBar.format(fecha) + idSuc;
+        ti.alinear( TipoAlineacion.CENTRO );
+        ti.imprimeCodigoBarras(barCode, TipoAnchuraCodigoBarras.N2, true);
+        ti.alimentarPapel( 40 );
+
 		// Cabecera
 		ti.imprimirSeparacion();
 		ti.alimentarPapel( 40 );
@@ -420,10 +433,12 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 		ti.establecerTipoImpresion( TipoImpresion.NORMAL, TipoFuente.A, false );
 		ti.alinear( TipoAlineacion.IZQUIERDA );
 		ti.imprimirSeparacion();
+
 		// Encabezado
 		ti.alimentarPapel( 10 );
 		ti.establecerTipoImpresion( TipoImpresion.NORMAL, TipoFuente.B, false );
-		// Fecha
+
+        // Fecha
 		ti.alinear( TipoAlineacion.DERECHA );
 		ti.imprimirString( sdf.format( fecha ) );
 		ti.imprimirString( "    " );
@@ -616,7 +631,12 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 			}
 		}
 
-		// Finalizar
+        // Codigo barra finalizar captura
+        ti.alinear( TipoAlineacion.CENTRO );
+        ti.alimentarPapel( 40 );
+        ti.imprimeCodigoBarras("100001", TipoAnchuraCodigoBarras.N3, true);
+
+        // Finalizar
 		ti.alimentarPapel( 200 );
 		ti.alimentarPapel( 200 );
 		ti.cortarPapel( TipoCorte.CORTE_PARCIAL );
@@ -1061,9 +1081,11 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
         ti.establecerTipoImpresion( TipoImpresion.NORMAL, TipoFuente.A, false );
         ti.alinear( TipoAlineacion.IZQUIERDA );
         ti.imprimirSeparacion();
+
         // Encabezado
         ti.alimentarPapel( 10 );
         ti.establecerTipoImpresion( TipoImpresion.NORMAL, TipoFuente.B, false );
+
         // Fecha
         ti.alinear( TipoAlineacion.DERECHA );
         ti.imprimirString( sdf.format( fecha ) );
