@@ -54,3 +54,4 @@ lib/
 acusar_tipo.sh
 *.log
 .groovy/
+build/
