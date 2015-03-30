@@ -13,6 +13,7 @@ import mx.com.lux.control.trabajos.exception.DAOException;
 import mx.com.lux.control.trabajos.exception.PrinterException;
 import mx.com.lux.control.trabajos.exception.SystemException;
 import mx.com.lux.control.trabajos.util.properties.ImpresionPropertyHelper;
+import mx.com.lux.control.trabajos.util.ApplicationUtils;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,8 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
+
 
 @Service( "trabajoImpresion" )
 public class TrabajoImpresionImpl implements TrabajoImpresion {
@@ -414,11 +417,10 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 
         // Codigo barra inicio escaneo
         SimpleDateFormat dateCodeBar = new SimpleDateFormat( "ddMM" );
-        String idSuc = "00000" + sucursal.idSucursal();
-        idSuc = idSuc.substring(idSuc.length() - 5, idSuc.length());
-        String strViaje = "00" + idViaje;
-        strViaje = strViaje.substring(strViaje.length() - 2, strViaje.length());
+        String idSuc = ApplicationUtils.shiftStringRight(sucursal.idSucursal(), 5, "0");
+        String strViaje = ApplicationUtils.shiftStringRight(Integer.toString(idViaje), 2, "0");
         String barCode = strViaje + dateCodeBar.format(fecha) + idSuc;
+
         ti.alinear( TipoAlineacion.CENTRO );
         ti.imprimeCodigoBarras(barCode, TipoAnchuraCodigoBarras.N2, true);
         ti.alimentarPapel( 40 );
@@ -671,16 +673,25 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 		SimpleDateFormat sdf = new SimpleDateFormat( "dd-MM-yyyy" );
 		ImpresoraTM88 ti = new ImpresoraTM88( nombreArchivo );
 		// Inicializar
+        ti.alimentarPapel( 40 );
+
+        // Codigo Barras
+        String idSuc = ApplicationUtils.shiftStringRight(empleado.getSucursal().idSucursal(), 5, "0");
+        String numSobre = ApplicationUtils.shiftStringRight(sobre.getId().toString(), 5, "0");
+        String codeBar = "P" + idSuc + numSobre;
+
+        ti.alinear( TipoAlineacion.CENTRO );
+        ti.imprimeCodigoBarras( codeBar, TipoAnchuraCodigoBarras.N2, true );
+
 		// Cabecera
-		ti.imprimirSeparacion();
-		ti.alimentarPapel( 40 );
-		ti.alinear( TipoAlineacion.CENTRO );
+        ti.imprimirSeparacion();
 		ti.establecerTipoImpresion( TipoImpresion.DOBLEALTURA_ENFATIZADO, TipoFuente.A, false );
 		ti.imprimirString( tituloSobre );
 		ti.saltoLinea();
 		ti.establecerTipoImpresion( TipoImpresion.NORMAL, TipoFuente.A, false );
 		ti.alinear( TipoAlineacion.IZQUIERDA );
 		ti.imprimirSeparacion();
+
 		// Fecha
 		ti.alimentarPapel( 10 );
 		ti.establecerTipoImpresion( TipoImpresion.NORMAL, TipoFuente.B, false );
@@ -688,9 +699,11 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 		ti.imprimirString( sdf.format( fecha ) );
 		ti.imprimirString( "    " );
 		ti.saltoLinea();
+
 		// Cuerpo
 		ti.alinear( TipoAlineacion.IZQUIERDA );
 		imprimirSobre( sobre, empleado, ti );
+
 		// Pie
 		ti.alimentarPapel( 150 );
 		ti.alinear( TipoAlineacion.CENTRO );
@@ -949,7 +962,16 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 	public void imprimirOrdenServicioArchivo( final JbNota jbNota, final Empleado empleado, final Cliente cliente, final Sucursal sucursal, final Date fecha, final String nombreArchivo, final Boolean flag ) throws ApplicationException, IOException {
 		SimpleDateFormat sdf = new SimpleDateFormat( "dd-MM-yyyy" );
 		ImpresoraTM88 ti = new ImpresoraTM88( nombreArchivo );
-		ti.imprimirSeparacion();
+
+        // Codigo Barras
+        String idSuc = ApplicationUtils.shiftStringRight(empleado.getSucursal().idSucursal(), 5, "0");
+        String numServicio = ApplicationUtils.shiftStringRight( Integer.toString(jbNota.getIdNota()), 5, "0");
+        String codeBar = "S" + idSuc + numServicio;
+
+        ti.alinear( TipoAlineacion.CENTRO );
+        ti.imprimeCodigoBarras( codeBar, TipoAnchuraCodigoBarras.N2, true );
+
+        ti.imprimirSeparacion();
 		ti.alimentarPapel( 40 );
 		ti.alinear( TipoAlineacion.IZQUIERDA );
 		ti.establecerTipoImpresion( TipoImpresion.DOBLEALTURA_ENFATIZADO, TipoFuente.A, false );
@@ -1028,12 +1050,14 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 		ti.establecerTipoImpresion( TipoImpresion.ENFATIZADO, TipoFuente.B, false );
 		ti.imprimirString( ACEPTA_CLIENTE_LABEL );
 		ti.saltoLinea();
+
 		// Firma Gerente
 		ti.alimentarPapel( 200 );
 		ti.alinear( TipoAlineacion.CENTRO );
 		ti.establecerTipoImpresion( TipoImpresion.ENFATIZADO, TipoFuente.B, false );
 		ti.imprimirLineaFirma();
 		ti.imprimirString( voboGerenteLabel );
+
 		// Finalizar
 		ti.alimentarPapel( 200 );
 		ti.alimentarPapel( 200 );

@@ -6,6 +6,7 @@ import mx.com.lux.control.trabajos.data.dao.EmpleadoDAO;
 import mx.com.lux.control.trabajos.data.dao.JbDevDAO;
 import mx.com.lux.control.trabajos.data.dao.JbViajeDetDAO;
 import mx.com.lux.control.trabajos.data.dao.envio.ViajeDAO;
+import mx.com.lux.control.trabajos.data.dao.ordenservicio.OrdenServicioDAO;
 import mx.com.lux.control.trabajos.data.dao.sobres.SobreDAO;
 import mx.com.lux.control.trabajos.data.dao.trabajo.TrabajoDAO;
 import mx.com.lux.control.trabajos.data.vo.*;
@@ -117,6 +118,7 @@ public class EnvioServiceImpl implements EnvioService {
         List<JbSobre> sobres = new ArrayList<JbSobre>();
         List<JbSobre> sobresVacios = new ArrayList<JbSobre>();
         List<JbSobre> sobresNoVacios = new ArrayList<JbSobre>();
+        List<Jb> ordenesServicio = new ArrayList<Jb>();
 
 
         List<JbDev> jbDevList = new ArrayList<JbDev>();
@@ -178,6 +180,9 @@ public class EnvioServiceImpl implements EnvioService {
             // se extrae la lista de devoluciones
             doctoInvList = trabajoDAO.findAllDoctoInvByTipoAndEstado( Constants.DEVOLUCIONES_TIPO_DA, Constants.DEVOLUCIONES_ESTADO_PENDIENTE );
 
+            // se extrae lista de ordenes de servicios
+            ordenesServicio = trabajoDAO.findByJbTipo( JbTipoConstants.JB_TIPO_OS );
+
             // set valores para JbViaje
             String nextIdViaje = String.valueOf( findNextIdViaje() );
             jbViaje.getId().setIdViaje( nextIdViaje );
@@ -229,15 +234,15 @@ public class EnvioServiceImpl implements EnvioService {
                     lstViajeDet.add( viaje );
 
                     // se crea contenido para acuse
-                    contenido = contenido + job.getRx();
-                    if ( jbList.size() == jbList.indexOf( job ) + 1 ) {
-                        contenido = contenido + pipe;
-                    } else {
-                        contenido = contenido + coma + " ";
-                    }
+                    contenido = contenido + job.getRx() + coma + " ";
+                    //if ( jbList.size() == jbList.indexOf( job ) + 1 ) {
+                    //    contenido = contenido + pipe;
+                    //} else {
+                    //    contenido = contenido + coma + " ";
+                    //}
                 }
             } else {
-                contenido = contenido + pipe;
+                //contenido = contenido + pipe;
             }
 
             // actualizar JbSobre
@@ -272,6 +277,16 @@ public class EnvioServiceImpl implements EnvioService {
                 } else {
                     count++;
                 }
+
+                contenido =  contenido + "P" + sobre.getId() + coma + " ";
+            }
+
+            // Se termina campo rxVal=
+            if ( contenido.endsWith(coma + " ") ) {
+                contenido = contenido.substring(0, contenido.length()-2);
+                contenido = contenido + pipe;
+            }else{
+                contenido = contenido + pipe;
             }
 
             // actualizar JbDev
@@ -288,10 +303,9 @@ public class EnvioServiceImpl implements EnvioService {
             }
 
             SimpleDateFormat dateCodeBar = new SimpleDateFormat( "ddMM" );
-            String idSuc = "00000" + empleado.getSucursal().getIdSucursal();
-            idSuc = idSuc.substring(idSuc.length() - 5, idSuc.length());
-            String strViaje = "00" + jbViaje.getId().getIdViaje();
-            strViaje = strViaje.substring(strViaje.length() - 2, strViaje.length());
+            String idSuc = ApplicationUtils.shiftStringRight(Integer.toString(empleado.getSucursal().getIdSucursal()), 5, "0");
+            String strViaje = ApplicationUtils.shiftStringRight(jbViaje.getId().getIdViaje(), 2, "0");
+
             String barCode = strViaje + dateCodeBar.format(new Timestamp( System.currentTimeMillis())) + idSuc;
 
             // se agrega más contenido para acuse
