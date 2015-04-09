@@ -608,27 +608,57 @@ public class TrabajoServiceImpl implements TrabajoService {
 				trabajoDAO.save( llamadaGrupo );
 			}
 		} else {
-			JbLlamada llamada = findJbLlamadaById( rx );
-			if ( llamada == null ) {
-				llamada = new JbLlamada();
-				llamada.setRx( rx );
-			}
-			llamada.setNumLlamada( jb.getNumLlamada() );
-			llamada.setFecha( new Timestamp( System.currentTimeMillis() ) );
-			llamada.setEstado( EstadoTrabajo.PENDIENTE.codigo() );
-			llamada.setContesto( null );
-			llamada.setEmpAtendio( atendio );
-			llamada.setEmpLlamo( null );
-			llamada.setTipo( Constants.ENTREGAR );
-			llamada.setObs( null );
-			llamada.setGrupo( false );
-			llamada.setIdMod( empleado.getIdEmpleado() );
-			trabajoDAO.save( llamada );
-		}
+            generaLlamada(jb, empleado);
+        }
+
 		if ( "EXT".equalsIgnoreCase( jb.getEmpAtendio().trim() ) ) {
 			recepcionBusiness.insertarAcuseRecepcionSatisfactoria( rx );
 		}
 	}
+
+    public Boolean generaLlamada(Jb jb, Empleado empleado) throws ApplicationException {
+
+        JbLlamada llamada = findJbLlamadaById( jb.getRx() );
+        FormaContacto formaContacto = formaContactoDAO.obtenPorRx( jb.getRx() );
+
+        if ( formaContacto != null ) {
+            if ( formaContacto.getTipoContacto().getIdTipoContacto() == 3 ) {
+
+                if ( llamada != null ) {
+                    trabajoDAO.delete(llamada);
+                    llamada = null;
+                }
+
+                return false;
+            }
+        }
+
+        if ( jb.getNoLlamar() == true || jb.getNoLlamar() == null ) {
+            if ( llamada != null ) {
+                trabajoDAO.delete(llamada);
+                llamada = null;
+            }
+            return false;
+        }
+
+        if ( llamada == null )
+            llamada = new JbLlamada();
+
+        llamada.setRx(jb.getRx());
+        llamada.setNumLlamada(jb.getNumLlamada());
+        llamada.setFecha(new Timestamp(System.currentTimeMillis()));
+        llamada.setEstado(EstadoTrabajo.PENDIENTE.codigo());
+        llamada.setContesto(null);
+        llamada.setEmpAtendio(jb.getEmpAtendio());
+        llamada.setEmpLlamo(null);
+        llamada.setTipo(Constants.ENTREGAR);
+        llamada.setObs(null);
+        llamada.setGrupo(false);
+        llamada.setIdMod(empleado.getIdEmpleado());
+        trabajoDAO.save(llamada);
+
+        return true;
+    }
 
 	@Override
 	public void desvincular( String rx ) throws ApplicationException {

@@ -347,7 +347,7 @@ public class RecepcionDialog extends Dialog {
                     }
                 }
             } else if( !grupo ) {
-                if ( esContactoSMS ) {
+                if ( esContactoSMS && jb.getNoLlamar() == false ) {
                     try {
                         contactoViewService.registraContactoSMS( rx, true );
                         MessageDialog.openInformation( getShell(), strInfo, TrabajosPropertyHelper.getProperty( "trabajos.msg.sms.info" ) );

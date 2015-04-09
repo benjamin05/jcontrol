@@ -69,6 +69,7 @@ public class ReprogramarDialog extends Dialog {
 	private Date today = new Date();
 	private Calendar calendar;
 	private String fecha;
+    private Date fechaVolverLlamar;
 
     private Integer dias;
 
@@ -80,8 +81,12 @@ public class ReprogramarDialog extends Dialog {
 			reprogramarDTO = (ReprogramarDTO) Session.getAttribute( MenuInfoTrabajos.ITEM_SELECTED_REPROGRAMAR_DTO );
 			String rx = (String) Session.getAttribute( MenuInfoTrabajos.ITEM_SELECTED_ID_RX );
 			parametroVolverContactar = gParametroService.findById( GParametroConstants.PARAMETRO_VOLVER_CONTACTAR );
+
 			grupo = false;
 			jb = trabajoService.findById( rx );
+
+            fechaVolverLlamar = jb.getVolverLlamar();
+
 		} catch ( ApplicationException e ) {
 			e.printStackTrace();
 		}
@@ -205,7 +210,15 @@ public class ReprogramarDialog extends Dialog {
 		txtDias.setFont( SWTResourceManager.getFont( "Ubuntu", 10, SWT.NORMAL ) );
 		txtDias.setBounds( 297, 10, 57, 20 );
 		txtDias.setTextLimit( 4 );
-		txtDias.setText( parametroVolverContactar.getValor() );
+
+        Integer diasDif = DateUtils.daysBetweenCeilDayHours( new Date(), fechaVolverLlamar );
+
+        if ( diasDif <= 0 ) {
+            txtDias.setText( parametroVolverContactar.getValor() );
+        }else{
+            txtDias.setText( diasDif.toString() );
+        }
+
 
 		txtDias.addKeyListener( new KeyListener() {
 
