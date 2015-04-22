@@ -1,6 +1,7 @@
 package mx.com.lux.control.trabajos.data.dao.trabajo;
 
 import mx.com.lux.control.trabajos.data.dao.BasicsDAO;
+import mx.com.lux.control.trabajos.data.vo.JbTrack;
 import mx.com.lux.control.trabajos.data.vo.TrackView;
 import mx.com.lux.control.trabajos.exception.DAOException;
 
@@ -12,4 +13,5 @@ public interface TrabajoTrackDAO extends BasicsDAO {
 
 	public int countAllTrackView( String rx ) throws DAOException;
 
+    public List<JbTrack> findAllJbTrack(String rx) throws DAOException;
 }

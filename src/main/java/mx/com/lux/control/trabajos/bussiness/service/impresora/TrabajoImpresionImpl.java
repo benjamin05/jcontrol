@@ -51,6 +51,7 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 	private static final String doctoLabel2 = "DOCTO:";
 	private static final String sucursalSolicitaLabel2 = "SUCURSAL QUE SOLICITA:";
 	private static final String apartadoLabel2 = "APARTADO:";
+    private static final String folioSobreLabel = "FOLIO P.:";
 	private static final String contenidoLabel2 = "CONTENIDO:";
 	private static final String sucursalLabel = "SUCURSAL:";
 	private static final String sucursalDestinoLabel = "SUC. DESTINO:";
@@ -482,7 +483,7 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 			ti.establecerTipoImpresion( TipoImpresion.NORMAL, TipoFuente.B, false );
 			for ( Jb jb : trabajosLab ) {
 				imprimirTrabajoConRxCodigoSurte( jb, ti );
-				ti.saltoLinea();
+				//ti.saltoLinea();
 			}
 			ti.saltoLinea();
 		}
@@ -718,6 +719,12 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 	}
 
 	private void imprimirTrabajoConRxCodigoSurte( Jb jb, ImpresoraTM88 ti ) throws IOException, DAOException {
+
+        List<JbTrack> tracks = trackDAO.findJbTrackByRxAndEstado( jb.getRx(), "FAX" );
+
+        if ( !tracks.isEmpty() )
+            return;
+
 		// - Si JB.roto > 0, anteponer una "R" a JB.rx
 		if ( jb.getRoto() != null && jb.getRoto() > 0 ) {
 			ti.imprimirString( TAM_COL_RX, "R" + jb.getRx() );
@@ -726,7 +733,6 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 		}
 
 		ti.imprimirString( TAM_COL_CODIGO, jb.getMaterial() );
-		List<JbTrack> tracks = trackDAO.findJbTrackByRxAndEstado( jb.getRx(), "FAX" );
 
 		// Si existe en JB_TRACK.estado = FAX, agregar una "F" en
 		// JB.surte
@@ -735,11 +741,19 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 		} else {
 			ti.imprimirString( TAM_COL_SURTE, jb.getSurte() );
 		}
+
+        ti.saltoLinea();
 	}
 
 
     private void imprimirTrabajoConRxCodigoSurteHist( JbViajeDet jb, ImpresoraTM88 ti ) throws IOException, DAOException {
         // - Si JB.roto > 0, anteponer una "R" a JB.rx
+
+        List<JbTrack> tracks = trackDAO.findJbTrackByRxAndEstado( jb.getRx(), "FAX" );
+
+        if ( !tracks.isEmpty() )
+            return;
+
         if ( jb.getRoto() != null && jb.getRoto() > 0 ) {
             ti.imprimirString( TAM_COL_RX, "R" + jb.getRx() );
         } else {
@@ -747,7 +761,6 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
         }
 
         ti.imprimirString( TAM_COL_CODIGO, jb.getMaterial() );
-        List<JbTrack> tracks = trackDAO.findJbTrackByRxAndEstado( jb.getRx(), "FAX" );
 
         // Si existe en JB_TRACK.estado = FAX, agregar una "F" en
         // JB.surte
@@ -756,6 +769,8 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
         } else {
             ti.imprimirString( TAM_COL_SURTE, jb.getSurte() );
         }
+
+        ti.saltoLinea();
     }
 
 	private void imprimirDevolucion( DoctoInv doctoInv, ImpresoraTM88 ti ) throws IOException, DAOException {
@@ -767,12 +782,15 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 		ti.imprimirString( doctoLabel2, jbDev.getDocumento() );
 		String idSucursal = jbDev.getSucursal();
 		Sucursal sucursalSolicitante = sucursalDAO.findById( Integer.parseInt( idSucursal.trim() ) );
-		if ( sucursalSolicitante != null ) {
+
+        if ( sucursalSolicitante != null ) {
 			ti.imprimirString( sucursalSolicitaLabel2, sucursalSolicitante.getNombre() );
 		} else {
 			ti.imprimirString( sucursalSolicitaLabel2, "" );
 		}
-		ti.imprimirString( apartadoLabel2, jbDev.getApartado() );
+
+        ti.imprimirString( apartadoLabel2, jbDev.getApartado() );
+        ti.imprimirString( folioSobreLabel, jbDev.getIdSobre().toString() );
 	}
 
 	private void imprimirTrabajoConRxCodigo( Jb jb, ImpresoraTM88 ti ) throws IOException, DAOException {
@@ -858,6 +876,7 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 		ti.imprimirString( paraLabel2, sobre.getDest() );
 		ti.imprimirString( areaLabeL2, sobre.getArea() );
 		ti.imprimirString( contenidoLabel2, sobre.getContenido() );
+        ti.imprimirString( folioSobreLabel, sobre.getId().toString() );
 	}
 
 	private void imprimirSobreConRx( JbSobre sobre, ImpresoraTM88 ti ) throws IOException, DAOException {
@@ -872,6 +891,7 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 		ti.imprimirString( paraLabel2, sobre.getDest() );
 		ti.imprimirString( areaLabeL2, sobre.getArea() );
 		ti.imprimirString( contenidoLabel2, sobre.getContenido() );
+        ti.imprimirString( folioSobreLabel, sobre.getId().toString() );
 	}
 
 	@Override
@@ -1152,7 +1172,7 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
             ti.establecerTipoImpresion( TipoImpresion.NORMAL, TipoFuente.B, false );
             for ( JbViajeDet jb : trabajosLab ) {
                 imprimirTrabajoConRxCodigoSurteHist( jb, ti );
-                ti.saltoLinea();
+                //ti.saltoLinea();
             }
             ti.saltoLinea();
         }

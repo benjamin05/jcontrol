@@ -26,6 +26,7 @@ public class JbGarantia implements java.io.Serializable {
 	private String tipoGarantia;
 	private String dejo;
 	private String idMod;
+    private Integer numOrden;
 
 	public Integer getId() {
 		return id;
@@ -189,4 +190,11 @@ public class JbGarantia implements java.io.Serializable {
 		this.idMod = idMod;
 	}
 
+    public Integer getNumOrden() {
+        return numOrden;
+    }
+
+    public void setNumOrden(Integer numOrden) {
+        this.numOrden = numOrden;
+    }
 }

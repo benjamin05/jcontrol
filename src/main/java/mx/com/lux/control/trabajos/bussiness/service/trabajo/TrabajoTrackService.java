@@ -14,4 +14,6 @@ public interface TrabajoTrackService {
 
 	public int countAllTrackView( String rx ) throws ApplicationException;
 
+    public List<JbTrack> findAllJbTracks(String rx) throws ApplicationException;
+
 }

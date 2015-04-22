@@ -1,5 +1,6 @@
 package mx.com.lux.control.trabajos.bussiness.service.envio;
 
+import mx.com.lux.control.trabajos.bussiness.service.GarantiaService;
 import mx.com.lux.control.trabajos.bussiness.service.TicketService;
 import mx.com.lux.control.trabajos.bussiness.service.impresora.TrabajoImpresion;
 import mx.com.lux.control.trabajos.data.dao.EmpleadoDAO;
@@ -8,6 +9,7 @@ import mx.com.lux.control.trabajos.data.dao.JbViajeDetDAO;
 import mx.com.lux.control.trabajos.data.dao.envio.ViajeDAO;
 import mx.com.lux.control.trabajos.data.dao.ordenservicio.OrdenServicioDAO;
 import mx.com.lux.control.trabajos.data.dao.sobres.SobreDAO;
+import mx.com.lux.control.trabajos.data.dao.trabajo.JbTrackDAO;
 import mx.com.lux.control.trabajos.data.dao.trabajo.TrabajoDAO;
 import mx.com.lux.control.trabajos.data.vo.*;
 import mx.com.lux.control.trabajos.exception.ApplicationException;
@@ -42,6 +44,9 @@ public class EnvioServiceImpl implements EnvioService {
     private TrabajoDAO trabajoDAO;
 
     @Resource
+    private JbTrackDAO trackDAO;
+
+    @Resource
     private ViajeDAO viajeDAO;
 
     @Resource
@@ -61,6 +66,9 @@ public class EnvioServiceImpl implements EnvioService {
 
     @Resource
     private TrabajoImpresion trabajoImpresion;
+
+    @Resource
+    private GarantiaService garantiaService;
 
     @Override
     public int findNextIdViaje() throws ApplicationException {
@@ -233,16 +241,44 @@ public class EnvioServiceImpl implements EnvioService {
                     viaje.setRoto( job.getRoto() );
                     lstViajeDet.add( viaje );
 
+                    String rx = job.getRx();
+
+                    if ( job.getJbTipo().startsWith("GAR") ) {
+                        Integer idGarantia = Integer.parseInt(rx.substring(1));
+                        JbGarantia jbGarantia = garantiaService.obtenerGarantiaPorId(idGarantia);
+
+                        System.out.println("Valor garantia"+jbGarantia);
+                        if ( jbGarantia.getNumOrden() == null )
+                            rx = job.getRx();
+                        else
+                            rx = job.getRx() + jbGarantia.getNumOrden().toString();
+                    }
+
+                    if ( job.getEstado().getIdEdo().startsWith( EstadoConstants.ESTADO_ROTO_POR_ENVIAR ) ) {
+
+                        Integer numOrden = trabajoDAO.getLastNumOrdenRepo(job.getRx());
+
+                        rx = "R" + job.getRx() + numOrden.toString();
+                    }
+
+                    if ( job.getEstado().getIdEdo().startsWith( EstadoConstants.ESTADO_ROTO_EN_PINO ) ) {
+
+                        Integer numOrden = trabajoDAO.getLastNumOrdenRepo(job.getRx());
+
+                        rx = "R" + job.getRx();
+
+                        if ( numOrden != null )
+                            rx = rx + numOrden.toString();
+                    }
+
+                    List<JbTrack> tracks = trackDAO.findJbTrackByRxAndEstado( job.getRx(), "FAX" );
+
                     // se crea contenido para acuse
-                    contenido = contenido + job.getRx() + coma + " ";
-                    //if ( jbList.size() == jbList.indexOf( job ) + 1 ) {
-                    //    contenido = contenido + pipe;
-                    //} else {
-                    //    contenido = contenido + coma + " ";
-                    //}
+                    if ( tracks.isEmpty() ) {
+                        contenido = contenido + rx + coma + " ";
+                    }
+
                 }
-            } else {
-                //contenido = contenido + pipe;
             }
 
             // actualizar JbSobre
@@ -281,19 +317,20 @@ public class EnvioServiceImpl implements EnvioService {
                 contenido =  contenido + "P" + sobre.getId() + coma + " ";
             }
 
+            // actualizar JbDev
+            for ( JbDev jbd : ApplicationUtils.compruebaLista( jbDevList ) ) {
+                jbd.setFechaEnvio( new Timestamp( System.currentTimeMillis() ) );
+                jbd.setIdViaje( nextIdViaje );
+                contenido =  contenido + "P" + jbd.getIdSobre() + coma + " ";
+                count++;
+            }
+
             // Se termina campo rxVal=
             if ( contenido.endsWith(coma + " ") ) {
                 contenido = contenido.substring(0, contenido.length()-2);
                 contenido = contenido + pipe;
             }else{
                 contenido = contenido + pipe;
-            }
-
-            // actualizar JbDev
-            for ( JbDev jbd : ApplicationUtils.compruebaLista( jbDevList ) ) {
-                jbd.setFechaEnvio( new Timestamp( System.currentTimeMillis() ) );
-                jbd.setIdViaje( nextIdViaje );
-                count++;
             }
 
             // actualizar DoctoInv

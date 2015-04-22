@@ -19,5 +19,6 @@
         <property name="tipoGarantia" column="tipo_gar" type="string" length="10" />
         <property name="dejo" column="dejo" type="string" />
         <property name="idMod" column="id_mod" type="string" length="13" />
+        <property name="numOrden" column="num_orden" type="integer" />
     </class>
 </hibernate-mapping>

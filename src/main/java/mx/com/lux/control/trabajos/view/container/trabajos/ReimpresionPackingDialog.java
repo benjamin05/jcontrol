@@ -133,7 +133,7 @@ public class ReimpresionPackingDialog extends Dialog {
                 String fecha = txtFecha.getText();
                 try{
                     if( StringUtils.trimToEmpty(viaje).length() > 0 && StringUtils.trimToEmpty(fecha).length() > 0 ){
-                        String print = envioService.imprimirPackingCerrado( viaje, fecha );
+                        String print = envioService.imprimirPackingCerrado( viaje.trim(), fecha );
                         if( print == null ){
                             lblMensaje.setText( MSJ_BUSQUEDA_INCORRECTA );
                         }

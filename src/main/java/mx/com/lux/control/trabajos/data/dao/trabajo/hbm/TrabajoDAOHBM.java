@@ -577,9 +577,34 @@ public class TrabajoDAOHBM extends DAOSupport implements TrabajoDAO {
         return lista;
     }
 
-
     public void saveJb( Jb jb ) throws DAOException{
-
         getSession().save( jb );
     }
+
+    @SuppressWarnings( "unchecked" )
+    @Override
+    public Integer getLastNumOrdenRepo( String rx ) throws DAOException {
+
+        StringBuilder sb = new StringBuilder();
+        sb.append( "FROM Reposicion r " );
+        sb.append( "WHERE r.factura=:rxParam " );
+        sb.append( "ORDER BY r.numeroOrden" );
+        Query query = getSession().createQuery( sb.toString() );
+        query.setText( "rxParam", rx.trim() );
+
+        List<Reposicion> lista = query.list();
+
+        Integer numOrden = null;
+
+        if ( lista != null ) {
+            for ( Reposicion repo : lista ) {
+                numOrden = repo.getNumeroOrden();
+            }
+        }
+
+        //(List<Reposicion>) findByNamedQuery( "QUERY_FIND_LAST_NUM_ORDEN_REPO", new String[]{ rx }, new Object[]{ rx } );
+
+        return numOrden;
+    }
+
 }
