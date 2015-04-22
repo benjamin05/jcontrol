@@ -1,1 +1,0 @@
-montoVal=${monto}|rxVal=${rx}|fechaVal=${fechaEntrega}|emp_nombreVal=${empleado.nombreEmpleado}|id_empVal=${empleado.idEmpleado.trim()}|emp_ap_patVal=${empleado.apPatEmpleado}|emp_ap_matVal=${empleado.apMatEmpleado}|emp_id_puestoVal=${empleado.idPuesto}|id_suc_oriVal=${idSucursalOrigen}|id_suc_desVal=${idSucursalDestino}|id_acuseVal=${idAcuse}|
