@@ -633,12 +633,19 @@ public class TrabajoServiceImpl implements TrabajoService {
             }
         }
 
-        if ( jb.getNoLlamar() == true || jb.getNoLlamar() == null ) {
-            if ( llamada != null ) {
-                trabajoDAO.delete(llamada);
-                llamada = null;
+        if ( jb.getNoLlamar() == null ) {
+            if (llamada != null) {
+//                trabajoDAO.delete(llamada);
+//                llamada = null;
             }
-            return false;
+        }else{
+            if ( jb.getNoLlamar() == true  ) {
+                if (llamada != null) {
+                    trabajoDAO.delete(llamada);
+                    llamada = null;
+                }
+                return false;
+            }
         }
 
         if ( llamada == null )

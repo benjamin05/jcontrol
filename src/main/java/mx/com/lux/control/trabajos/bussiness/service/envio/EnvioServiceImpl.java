@@ -247,7 +247,6 @@ public class EnvioServiceImpl implements EnvioService {
                         Integer idGarantia = Integer.parseInt(rx.substring(1));
                         JbGarantia jbGarantia = garantiaService.obtenerGarantiaPorId(idGarantia);
 
-                        System.out.println("Valor garantia"+jbGarantia);
                         if ( jbGarantia.getNumOrden() == null )
                             rx = job.getRx();
                         else
@@ -272,11 +271,23 @@ public class EnvioServiceImpl implements EnvioService {
                     }
 
                     List<JbTrack> tracks = trackDAO.findJbTrackByRxAndEstado( job.getRx(), "FAX" );
+                    String colSurte = "";
+
+                    if ( tracks.isEmpty() ) {
+                        if (job.getSurte() != null) {
+                            colSurte = job.getSurte().trim();
+                        }
+                    }else {
+                        colSurte = "F" + job.getSurte().trim();
+                    }
 
                     // se crea contenido para acuse
-                    if ( tracks.isEmpty() ) {
+                    if ( colSurte.trim().equals("FP") ) {
+                        contenido = contenido;
+                    }else {
                         contenido = contenido + rx + coma + " ";
                     }
+
 
                 }
             }

@@ -203,7 +203,7 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 			ti.establecerTipoImpresion( TipoImpresion.NORMAL, TipoFuente.B, false );
 			for ( Jb jb : trabajosLab ) {
 				imprimirTrabajoConRxCodigoSurte( jb, ti );
-				ti.saltoLinea();
+//				ti.saltoLinea();
 			}
 			ti.saltoLinea();
 		}
@@ -722,9 +722,19 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 
         List<JbTrack> tracks = trackDAO.findJbTrackByRxAndEstado( jb.getRx(), "FAX" );
 
+        String colSurte = "";
+
         if ( !tracks.isEmpty() )
+            // Si existe en JB_TRACK.estado = FAX, agregar una "F" en JB.surte
+            colSurte = "F" + jb.getSurte();
+        else
+            colSurte = jb.getSurte();
+
+        //No incluir en ticket si es Fax con surte Pino
+        if ( colSurte.trim().equals("FP") )
             return;
 
+        // Columna de RX
 		// - Si JB.roto > 0, anteponer una "R" a JB.rx
 		if ( jb.getRoto() != null && jb.getRoto() > 0 ) {
 			ti.imprimirString( TAM_COL_RX, "R" + jb.getRx() );
@@ -732,17 +742,13 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 			ti.imprimirString( TAM_COL_RX, jb.getRx() );
 		}
 
+        // Columna de Codigo (Material)
 		ti.imprimirString( TAM_COL_CODIGO, jb.getMaterial() );
 
-		// Si existe en JB_TRACK.estado = FAX, agregar una "F" en
-		// JB.surte
-		if ( !tracks.isEmpty() ) {
-			ti.imprimirString( TAM_COL_SURTE, "F" + jb.getSurte() );
-		} else {
-			ti.imprimirString( TAM_COL_SURTE, jb.getSurte() );
-		}
-
+        // Columna de surte
+        ti.imprimirString(TAM_COL_SURTE, colSurte);
         ti.saltoLinea();
+
 	}
 
 
@@ -751,8 +757,19 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 
         List<JbTrack> tracks = trackDAO.findJbTrackByRxAndEstado( jb.getRx(), "FAX" );
 
-        if ( !tracks.isEmpty() )
+        String colSurte = "";
+
+        if ( !tracks.isEmpty() ) {
+            colSurte = jb.getSurte();
+        }else {
+            // Si existe en JB_TRACK.estado = FAX, agregar una "F" en JB.surte
+            colSurte = "F" + jb.getSurte();
+        }
+
+        //No incluir en ticket si es Fax con surte Pino
+        if ( colSurte.trim().equals("FP") )
             return;
+
 
         if ( jb.getRoto() != null && jb.getRoto() > 0 ) {
             ti.imprimirString( TAM_COL_RX, "R" + jb.getRx() );
@@ -764,11 +781,7 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 
         // Si existe en JB_TRACK.estado = FAX, agregar una "F" en
         // JB.surte
-        if ( !tracks.isEmpty() ) {
-            ti.imprimirString( TAM_COL_SURTE, "F" + jb.getSurte() );
-        } else {
-            ti.imprimirString( TAM_COL_SURTE, jb.getSurte() );
-        }
+        ti.imprimirString( TAM_COL_SURTE, colSurte );
 
         ti.saltoLinea();
     }
@@ -790,7 +803,11 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 		}
 
         ti.imprimirString( apartadoLabel2, jbDev.getApartado() );
-        ti.imprimirString( folioSobreLabel, jbDev.getIdSobre().toString() );
+
+        if ( jbDev.getIdSobre() != null )
+            ti.imprimirString( folioSobreLabel, jbDev.getIdSobre().toString() );
+        else
+            ti.imprimirString( folioSobreLabel, "" );
 	}
 
 	private void imprimirTrabajoConRxCodigo( Jb jb, ImpresoraTM88 ti ) throws IOException, DAOException {

@@ -347,29 +347,37 @@ public class RecepcionDialog extends Dialog {
                     }
                 }
             } else if( !grupo ) {
+                Boolean enviaSMS = false;
+
                 if ( esContactoSMS ) {
                     if ( jb.getNoLlamar() != null ) {
                         if ( jb.getNoLlamar() == false ) {
-                            try {
-                                contactoViewService.registraContactoSMS( rx, true );
-                                MessageDialog.openInformation( getShell(), strInfo, TrabajosPropertyHelper.getProperty( "trabajos.msg.sms.info" ) );
-                            } catch ( ApplicationException ex ) {
-                                Status status = new Status( IStatus.ERROR, "JSOI", 0, "Error al registrar contacto SMS", null );
-                                ErrorDialog.openError( shell, "Error", "Error", status );
-                            }
-
-                            JbTrack currentJbt = new JbTrack();
-                            currentJbt.setRx( rx );
-                            currentJbt.setEstado( estado );
-                            currentJbt.setObservaciones( StringUtils.defaultIfBlank( strInfo, "" ) );
-                            currentJbt.setEmpleado( empleado.getIdEmpleado() );
-                            currentJbt.setIdViaje( null );
-                            currentJbt.setFecha( new Date() );
-                            currentJbt.setIdMod( "0" );
-                            Object[] objRealizado = { currentJbLlamada, currentJbt, currentJb };
-                            saveContactoTrackJb(objRealizado);
+                            enviaSMS = true;
                         }
+                    }else{
+                        enviaSMS = true;
                     }
+                }
+
+                if ( enviaSMS ) {
+                    try {
+                        contactoViewService.registraContactoSMS( rx, true );
+                        MessageDialog.openInformation( getShell(), strInfo, TrabajosPropertyHelper.getProperty( "trabajos.msg.sms.info" ) );
+                    } catch ( ApplicationException ex ) {
+                        Status status = new Status( IStatus.ERROR, "JSOI", 0, "Error al registrar contacto SMS", null );
+                        ErrorDialog.openError( shell, "Error", "Error", status );
+                    }
+
+                    JbTrack currentJbt = new JbTrack();
+                    currentJbt.setRx( rx );
+                    currentJbt.setEstado( estado );
+                    currentJbt.setObservaciones( StringUtils.defaultIfBlank( strInfo, "" ) );
+                    currentJbt.setEmpleado( empleado.getIdEmpleado() );
+                    currentJbt.setIdViaje( null );
+                    currentJbt.setFecha( new Date() );
+                    currentJbt.setIdMod( "0" );
+                    Object[] objRealizado = { currentJbLlamada, currentJbt, currentJb };
+                    saveContactoTrackJb(objRealizado);
                 }
             }
         }

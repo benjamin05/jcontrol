@@ -167,9 +167,11 @@ public class BuscarTrabajoRotoDialog extends Dialog {
 		if( StringUtils.isNotBlank( rx ) ) {
 			Jb jb = trabajoService.findById( rx );
 			EstadoTrabajo estado = jb.estado();
+
 			if( EstadoTrabajo.CANCELADO.equals( estado ) || EstadoTrabajo.ENTREGADO.equals( estado ) ) {
 				return false;
 			}
+
 			String tipo = jb.getJbTipo();
 			if( "GAR".equals( tipo ) || "OS".equals( tipo ) ) {
 				return false;
