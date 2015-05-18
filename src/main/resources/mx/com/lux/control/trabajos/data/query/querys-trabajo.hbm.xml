@@ -137,7 +137,17 @@
 	</query>
 
 	<query name="findJbPorEnviar">
-		SELECT jb FROM Jb jb WHERE jb.estado IN ('PE','RPE')
+        SELECT jb from Jb jb
+         WHERE jb.estado IN ('PE','RPE')
+<!--
+           AND jb.rx not IN (
+               SELECT jbr.rx FROM JbRoto jbr
+                WHERE jbr.rx in (
+                        SELECT jb1.rx FROM Jb jb1
+                         WHERE jb1.estado IN ('PE', 'RPE')
+                      )
+                  AND jbr.tipo = 'A')
+-->
 	</query>
 
 	<query name="countJbNoEnviar">
@@ -148,6 +158,16 @@
 	<query name="countJbPorEnviar">
 		SELECT count(jb.rx) FROM Jb jb WHERE jb.estado IN
 		('PE','RPE')
+<!--
+           AND jb.rx not IN (
+               SELECT jbr.rx FROM JbRoto jbr
+                WHERE jbr.rx in (
+                        SELECT jb1.rx FROM Jb jb1
+                         WHERE jb1.estado IN ('PE', 'RPE')
+                      )
+                  AND jbr.tipo = 'A')
+-->
+
 	</query>
 
 	<query name="findByJbTipo">

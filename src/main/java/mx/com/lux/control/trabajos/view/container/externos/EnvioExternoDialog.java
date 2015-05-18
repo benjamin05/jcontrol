@@ -28,7 +28,9 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.*;
+import org.hibernate.mapping.Array;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -147,7 +149,12 @@ public class EnvioExternoDialog extends Dialog {
         final Combo destinoCombo = new Combo( grupo, SWT.BORDER | SWT.READ_ONLY );
         destinoCombo.setLayoutData( new GridData( INPUTS_W, INPUTS_H ) );
         destinoCombo.setVisibleItemCount( 5 );
-        destinoCombo.setItems( sucursales.keySet().toArray( new String[]{ } ) );
+
+        String[] lista = sucursales.keySet().toArray( new String[]{ } );
+        Arrays.sort(lista);
+        //destinoCombo.setItems( sucursales.keySet().toArray( new String[]{ } ) );
+        destinoCombo.setItems( lista );
+
         destinoCombo.addModifyListener( new ModifyListener() {
             @Override
             public void modifyText( ModifyEvent ev ) {

@@ -602,9 +602,52 @@ public class TrabajoDAOHBM extends DAOSupport implements TrabajoDAO {
             }
         }
 
-        //(List<Reposicion>) findByNamedQuery( "QUERY_FIND_LAST_NUM_ORDEN_REPO", new String[]{ rx }, new Object[]{ rx } );
-
         return numOrden;
     }
 
+    @SuppressWarnings( "unchecked" )
+    @Override
+    public JbServicio getJbServicioServicio( String servicio ) throws DAOException {
+
+        StringBuilder sb = new StringBuilder();
+        sb.append( "FROM JbServicio js " );
+        sb.append( "WHERE js.servicio=:servicio " );
+        Query query = getSession().createQuery( sb.toString() );
+        query.setText( "servicio", servicio.trim() );
+
+        List<JbServicio> lista = query.list();
+
+        JbServicio jbServicio = null;
+
+        if ( lista != null ) {
+            for ( JbServicio js : lista ) {
+                jbServicio = js;
+            }
+        }
+
+        return jbServicio;
+    }
+
+    public JbSobre getSobreFolioSobreAndEmp(String folioSobre, String emp ) throws DAOException {
+
+        StringBuilder sb = new StringBuilder();
+        sb.append( "FROM JbSobre js " );
+        sb.append( "WHERE js.folioSobre=:folioSobre " );
+        sb.append( "AND js.emp=:emp " );
+        Query query = getSession().createQuery( sb.toString() );
+        query.setText( "folioSobre", folioSobre.trim() );
+        query.setText( "emp", emp.trim() );
+
+        List<JbSobre> lista = query.list();
+
+        JbSobre jbSobre = new JbSobre();
+
+        if ( lista != null ) {
+            for ( JbSobre js : lista ) {
+                jbSobre = js;
+            }
+        }
+
+        return jbSobre;
+    }
 }

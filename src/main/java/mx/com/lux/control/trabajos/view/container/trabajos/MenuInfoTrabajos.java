@@ -5,6 +5,7 @@ import mx.com.lux.control.trabajos.bussiness.service.GarantiaService;
 import mx.com.lux.control.trabajos.bussiness.service.TicketService;
 import mx.com.lux.control.trabajos.bussiness.service.impresora.TrabajoImpresion;
 import mx.com.lux.control.trabajos.bussiness.service.trabajo.ClienteService;
+import mx.com.lux.control.trabajos.bussiness.service.trabajo.GParametroService;
 import mx.com.lux.control.trabajos.bussiness.service.trabajo.TrabajoService;
 import mx.com.lux.control.trabajos.data.vo.*;
 import mx.com.lux.control.trabajos.exception.ApplicationException;
@@ -57,6 +58,7 @@ public class MenuInfoTrabajos {
     private static final ExternoService externoService;
     private static final GarantiaService garantiaService;
     private static final TicketService ticketService;
+    private static final GParametroService gparametroService;
 
     public static String ITEM_SELECTED_ID_CLIENTE = "currentIdCliente";
     public static String ITEM_SELECTED_ID_RX = "currentIdRx";
@@ -84,6 +86,8 @@ public class MenuInfoTrabajos {
         externoService = ServiceLocator.getBean( ExternoService.class );
         garantiaService = ServiceLocator.getBean( GarantiaService.class );
         ticketService = ServiceLocator.getBean( TicketService.class );
+        gparametroService = ServiceLocator.getBean( GParametroService.class );
+
     }
 
     public MenuInfoTrabajos( Shell shell, Control control, List<Boolean> opcionesMenu ) {
@@ -355,24 +359,58 @@ public class MenuInfoTrabajos {
             mnItemNuevo.addSelectionListener( new SelectionListener() {
                 @Override
                 public void widgetSelected( SelectionEvent arg0 ) {
+
+                    String jbRx = (String) Session.getAttribute(MenuInfoTrabajos.ITEM_SELECTED_ID_RX);
+                    Empleado empleado = (Empleado) Session.getAttribute(Constants.PARAM_USER_LOGGED);
+                    Jb jb = null;
+
+                    // Mensaje para Fax sucursales Foraneas
+                    GParametro parametro = null;
+                    try {
+                        jb = trabajoService.findById(jbRx);
+                        parametro = gparametroService.findById("fax_surte_suc");
+                    } catch (ApplicationException e) {
+                        e.printStackTrace();
+                    }
+
+                    Boolean enviarFax = false;
+
+                    if (jb != null) {
+                        if (jb.getSurte().trim().equals("S")) {
+                            if (parametro != null) {
+                                if (parametro.getValor().trim().toUpperCase().equals("SI")) {
+                                    enviarFax = true;
+                                }
+                            }
+                        } else if (jb.getSurte().trim().equals("P")) {
+                            enviarFax = true;
+                        }
+                    }
+
+                    if (enviarFax == false) {
+                        MessageDialog.openWarning(shell, "Acción invalida", "Acción invalida, Trabajo no se puede enviar por Fax");
+                        return;
+                    }
+
                     String[] buttonsLabels = new String[]{ MessagesPropertyHelper.getProperty( "generic.si" ),
                             MessagesPropertyHelper.getProperty( "generic.no" ) };
                     MessageDialog confirm = new MessageDialog( shell, MessagesPropertyHelper.getProperty( "efax.title" ), null, MessagesPropertyHelper.getProperty( "efax.message" ), MessageDialog.INFORMATION, buttonsLabels, 0 );
                     int result = confirm.open();
                     if ( result == 0 ) {
                         try {
-                            String jbRx = ( String ) Session.getAttribute( MenuInfoTrabajos.ITEM_SELECTED_ID_RX );
-                            Empleado empleado = ( Empleado ) Session.getAttribute( Constants.PARAM_USER_LOGGED );
-                            boolean completeTask = trabajoService.enviarEFax( jbRx, empleado );
-                            if( !completeTask ){
-                                if( !completeTask ){
-                                    log.debug( "warning dialog" );
-                                    MessageDialog warningDialog = new MessageDialog( shell, MessagesPropertyHelper.getProperty( "advertencia.title" ),
-                                            null, MessagesPropertyHelper.getProperty( "efaxfail.message" ),
-                                            MessageDialog.ERROR, new String[]{ MessagesPropertyHelper.getProperty( "generic.ok" ) }, 0 );
-                                    warningDialog.open();
+
+                                boolean completeTask = trabajoService.enviarEFax(jbRx, empleado);
+                                if (!completeTask) {
+                                    if (!completeTask) {
+                                        log.debug("warning dialog");
+                                        MessageDialog warningDialog = new MessageDialog(shell, MessagesPropertyHelper.getProperty("advertencia.title"),
+                                                null, MessagesPropertyHelper.getProperty("efaxfail.message"),
+                                                MessageDialog.ERROR, new String[]{MessagesPropertyHelper.getProperty("generic.ok")}, 0);
+                                        warningDialog.open();
+                                    }
                                 }
-                            }
+
+
                             ApplicationUtils.recargarDatosPestanyaVisible();
                         } catch ( ApplicationException e ) {
                             e.printStackTrace();

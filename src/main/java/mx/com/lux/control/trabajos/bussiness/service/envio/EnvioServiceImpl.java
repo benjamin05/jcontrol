@@ -263,11 +263,34 @@ public class EnvioServiceImpl implements EnvioService {
                     if ( job.getEstado().getIdEdo().startsWith( EstadoConstants.ESTADO_ROTO_EN_PINO ) ) {
 
                         Integer numOrden = trabajoDAO.getLastNumOrdenRepo(job.getRx());
+                        JbRoto jbRoto = trabajoDAO.getLastJbRotoByRx( job.getRx() );
 
-                        rx = "R" + job.getRx();
+                        Boolean rotoArmazon = false;
 
-                        if ( numOrden != null )
-                            rx = rx + numOrden.toString();
+                        if ( jbRoto == null )
+                            rotoArmazon = false;
+                        else {
+                            if ( jbRoto.getTipo().trim().equals("A") ) {
+                                rotoArmazon = true;
+                            }else{
+                                rotoArmazon = false;
+                            }
+                        }
+
+                        if ( rotoArmazon ) {
+                            JbSobre jbSobreTmp = trabajoDAO.getSobreFolioSobreAndEmp( Integer.toString( jbRoto.getIdRoto() ), "ROTO" );
+
+                            if ( jbSobreTmp != null ) {
+                                rx = "P" + jbSobreTmp.getId().toString();
+                            }
+                        }else {
+
+                            rx = "R" + job.getRx();
+
+                            if (numOrden != null)
+                                rx = rx + numOrden.toString();
+                        }
+
                     }
 
                     List<JbTrack> tracks = trackDAO.findJbTrackByRxAndEstado( job.getRx(), "FAX" );

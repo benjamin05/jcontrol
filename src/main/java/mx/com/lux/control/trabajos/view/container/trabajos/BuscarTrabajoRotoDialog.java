@@ -143,8 +143,9 @@ public class BuscarTrabajoRotoDialog extends Dialog {
 		gd1.horizontalSpan = columnasEtiqueta;
 		etiqueta.setLayoutData( gd1 );
 
-		Text texto = new Text( contenedor, SWT.BORDER );
+		Text texto = new Text( contenedor, SWT.CENTER | SWT.BORDER );
 		texto.setToolTipText( textoEtiqueta );
+
 		GridData gd2 = new GridData();
 		gd2.widthHint = ancho( columnasTexto );
 		gd2.horizontalSpan = columnasTexto;
@@ -166,6 +167,10 @@ public class BuscarTrabajoRotoDialog extends Dialog {
 	private boolean esTrabajoValido( String rx ) {
 		if( StringUtils.isNotBlank( rx ) ) {
 			Jb jb = trabajoService.findById( rx );
+
+            if ( jb == null )
+                return false;
+
 			EstadoTrabajo estado = jb.estado();
 
 			if( EstadoTrabajo.CANCELADO.equals( estado ) || EstadoTrabajo.ENTREGADO.equals( estado ) ) {
@@ -173,7 +178,8 @@ public class BuscarTrabajoRotoDialog extends Dialog {
 			}
 
 			String tipo = jb.getJbTipo();
-			if( "GAR".equals( tipo ) || "OS".equals( tipo ) ) {
+
+            if( "GAR".equals( tipo ) || "OS".equals( tipo ) ) {
 				return false;
 			}
 			return true;

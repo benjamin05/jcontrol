@@ -365,7 +365,12 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 	public void imprimirPackingCerrado( Date fecha, int idViaje, String folioViaje, Empleado empleado, Sucursal sucursal, List<Jb> trabajosLab, List<Jb> trabajosRotosExternos, List<Jb> trabajosRefRepSp, List<Jb> trabajosGarantias, List<Jb> trabajosOrdenesServicio, List<Jb> trabajosExternos, List<JbSobre> sobresVacios, List<JbSobre> sobresNoVacios, List<JbDev> trabajosDevoluciones, List<DoctoInv> doctoInvList ) throws ApplicationException {
         String nombreArchivo = "";
 		try {
-			nombreArchivo = Long.toString( fecha.getTime() ) + Double.toString( Math.random() );
+
+            //nombreArchivo = Long.toString( new Date().getTime() ) + Double.toString( Math.random() );
+            File file = createTempFile("ticketSobre");
+            nombreArchivo = file.getAbsolutePath().toString();
+//            nombreArchivo = Long.toString( fecha.getTime() ) + Double.toString( Math.random() );
+
 			imprimirPackingCerradoArchivo( fecha, idViaje, folioViaje, empleado, sucursal, trabajosLab, trabajosRotosExternos, trabajosRefRepSp, trabajosGarantias, trabajosOrdenesServicio, trabajosExternos, sobresVacios, sobresNoVacios, trabajosDevoluciones, doctoInvList, nombreArchivo );
 			Cajas cajas = cajasDAO.findCajasById( idCajas );
 			String cmd = cajas.getImpTicket() + " " + nombreArchivo;
@@ -377,12 +382,13 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 			throw new PrinterException( printerExceptionMessage );
 		} catch ( InterruptedException e ) {
 			throw new SystemException( e.getMessage(), e );
-		} finally {
+		}
+        /*finally {
 			File f = new File( nombreArchivo );
 			if ( f.exists() && f.delete() ) {
 				log.debug( "Fichero borrado correctamente" );
 			}
-		}
+		}*/
 	}
 
 
@@ -413,9 +419,8 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 	private void imprimirPackingCerradoArchivo( Date fecha, int idViaje, String folioViaje, Empleado empleado, Sucursal sucursal, List<Jb> trabajosLab, List<Jb> trabajosRotosExternos, List<Jb> trabajosRefRepSp, List<Jb> trabajosGarantias, List<Jb> trabajosOrdenesServicio, List<Jb> trabajosExternos, List<JbSobre> sobresVacios, List<JbSobre> sobresNoVacios, List<JbDev> trabajosDevoluciones, List<DoctoInv> doctoInvList, String nombreArchivo ) throws IOException, DAOException {
 		SimpleDateFormat sdf = new SimpleDateFormat( "dd-MM-yyyy" );
 		ImpresoraTM88 ti = new ImpresoraTM88( nombreArchivo );
+
 		// Inicializar
-
-
         // Codigo barra inicio escaneo
         SimpleDateFormat dateCodeBar = new SimpleDateFormat( "ddMM" );
         String idSuc = ApplicationUtils.shiftStringRight(sucursal.idSucursal(), 5, "0");
@@ -649,9 +654,13 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 	@Override
 	public void imprimirSobre( Empleado empleado, JbSobre sobre ) throws ApplicationException {
 		String nombreArchivo = null;
-		try {
-			nombreArchivo = Long.toString( new Date().getTime() ) + Double.toString( Math.random() );
-			imprimirSobreArchivo( new Date(), empleado, sobre, nombreArchivo );
+
+        try {
+			//nombreArchivo = Long.toString( new Date().getTime() ) + Double.toString( Math.random() );
+            File file = createTempFile("ticketSobre");
+            nombreArchivo = file.getAbsolutePath().toString();
+
+            imprimirSobreArchivo( new Date(), empleado, sobre, nombreArchivo );
 			Cajas cajas = cajasDAO.findCajasById( idCajas );
 			String cmd = cajas.getImpTicket() + " " + nombreArchivo;
 			System.out.println( cmd );
@@ -662,16 +671,17 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 			throw new PrinterException( printerExceptionMessage );
 		} catch ( InterruptedException e ) {
 			throw new SystemException( e.getMessage(), e );
-		} finally {
-			File f = new File( nombreArchivo );
-			if ( f.exists() && f.delete() ) {
-				log.debug( "Fichero borrado correctamente" );
-			}
-		}
+		} //finally {
+//			File f = new File( nombreArchivo );
+//			if ( f.exists() && f.delete() ) {
+//				log.debug( "Fichero borrado correctamente" );
+//			}
+//		}
 	}
 
 	private void imprimirSobreArchivo( Date fecha, Empleado empleado, JbSobre sobre, String nombreArchivo ) throws IOException {
 		SimpleDateFormat sdf = new SimpleDateFormat( "dd-MM-yyyy" );
+
 		ImpresoraTM88 ti = new ImpresoraTM88( nombreArchivo );
 		// Inicializar
         ti.alimentarPapel( 40 );
@@ -912,14 +922,19 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 	}
 
 	@Override
-	public void imprimirNoSatisfactorio( Jb jb, JbRoto jbRoto, Empleado empleado, Sucursal sucursal ) throws ApplicationException {
+	public void imprimirNoSatisfactorio( Jb jb, JbRoto jbRoto, Empleado empleado, Sucursal sucursal, JbSobre jbSobre ) throws ApplicationException {
 		Date fecha = new Date();
 		String nombreArchivo = "";
 		try {
-			nombreArchivo = Long.toString( fecha.getTime() ) + Double.toString( Math.random() );
-			imprimirNoSatisfactorioArchivo( fecha, empleado, sucursal, jb, jbRoto, nombreArchivo );
+//			nombreArchivo = Long.toString( fecha.getTime() ) + Double.toString( Math.random() );
+
+            File file = createTempFile("ticketSobre");
+            nombreArchivo = file.getAbsolutePath().toString();
+
+			imprimirNoSatisfactorioArchivo( fecha, empleado, sucursal, jb, jbRoto, nombreArchivo, jbSobre );
 			Cajas cajas = cajasDAO.findCajasById( idCajas );
 			String cmd = cajas.getImpTicket() + " " + nombreArchivo;
+            log.debug( "Impresion: " + cmd );
 			Runtime run = Runtime.getRuntime();
 			Process pr = run.exec( cmd );
 			pr.waitFor();
@@ -927,41 +942,61 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 			throw new PrinterException( printerExceptionMessage );
 		} catch ( InterruptedException e ) {
 			throw new SystemException( e.getMessage(), e );
-		} finally {
+		}/* finally {
 			File f = new File( nombreArchivo );
 			if ( f.exists() && f.delete() ) {
 				log.debug( "Fichero borrado correctamente" );
 			}
-		}
+		}*/
 	}
 
-	public void imprimirNoSatisfactorioArchivo( Date fecha, Empleado empleado, Sucursal sucursal, Jb jb, JbRoto jbRoto, String nombreArchivo ) throws ApplicationException, IOException {
-		SimpleDateFormat sdf = new SimpleDateFormat( "dd-MM-yyyy" );
+	public void imprimirNoSatisfactorioArchivo( Date fecha, Empleado empleado, Sucursal sucursal, Jb jb, JbRoto jbRoto, String nombreArchivo, JbSobre jbSobre ) throws ApplicationException, IOException {
+
+        SimpleDateFormat sdf = new SimpleDateFormat( "dd-MM-yyyy" );
 		ImpresoraTM88 ti = new ImpresoraTM88( nombreArchivo );
+
 		// Inicializar
+
+        // Codigo Barras
+        if ( jbSobre != null ) {
+
+            String idSuc = ApplicationUtils.shiftStringRight(sucursal.idSucursal(), 5, "0");
+            String numSobre = ApplicationUtils.shiftStringRight(jbSobre.getId() .toString(), 5, "0");
+            String codeBar = "P" + idSuc + numSobre;
+
+            ti.alinear(TipoAlineacion.CENTRO);
+            ti.imprimeCodigoBarras(codeBar , TipoAnchuraCodigoBarras.N2, true);
+        }
+
 		// Cabecera
-		ti.imprimirSeparacion();
+        ti.imprimirSeparacion();
 		ti.alimentarPapel( 40 );
-		ti.alinear( TipoAlineacion.IZQUIERDA );
+
+        ti.alinear( TipoAlineacion.IZQUIERDA );
 		ti.establecerTipoImpresion( TipoImpresion.DOBLEALTURA_DOBLEANCHURA_ENFATIZADO, TipoFuente.A, false );
 		ti.imprimirString( tituloRoto );
 		ti.imprimirString( "      " );
-		ti.imprimirString( Integer.toString( jbRoto.getIdRoto() ) );
+		//ti.imprimirString( Integer.toString(  ) );
+        ti.imprimirString( jbRoto.getRx() );
 		ti.saltoLinea();
 		ti.establecerTipoImpresion( TipoImpresion.NORMAL, TipoFuente.A, false );
 		ti.alinear( TipoAlineacion.IZQUIERDA );
 		ti.imprimirSeparacion();
+
 		// Encabezado
 		ti.alimentarPapel( 10 );
 		ti.establecerTipoImpresion( TipoImpresion.NORMAL, TipoFuente.B, false );
+
 		// Fecha
 		ti.alinear( TipoAlineacion.DERECHA );
 		ti.imprimirString( sdf.format( fecha ) );
 		ti.imprimirString( "    " );
 		ti.saltoLinea();
+
 		// Sucursal
 		ti.alinear( TipoAlineacion.IZQUIERDA );
 		ti.imprimirString( sucursalLabel, sucursal.getNombre() );
+
 		// Fecha Venta
 		if ( jb.getFechaVenta() != null ) {
 			ti.imprimirString( fechaVentaLabel, sdf.format( jb.getFechaVenta() ) );
@@ -1008,6 +1043,10 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
         ti.alinear( TipoAlineacion.CENTRO );
         ti.imprimeCodigoBarras( codeBar, TipoAnchuraCodigoBarras.N2, true );
 
+//        ti.alinear( TipoAlineacion.IZQUIERDA );
+        ti.imprimeCodigoBarras( trabajoDAO.getJbServicioServicio(jbNota.getServicio()).getIdServicio().toString(), TipoAnchuraCodigoBarras.N2, true );
+        ti.alinear( TipoAlineacion.IZQUIERDA );
+
         ti.imprimirSeparacion();
 		ti.alimentarPapel( 40 );
 		ti.alinear( TipoAlineacion.IZQUIERDA );
@@ -1026,22 +1065,26 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 		ti.establecerTipoImpresion( TipoImpresion.NORMAL, TipoFuente.B, false );
 		ti.imprimirString( "\t" + sdf.format( fecha ) );
 		ti.saltoLinea();
+
 		// Sucursal
 		ti.alinear( TipoAlineacion.IZQUIERDA );
 		ti.establecerTipoImpresion( TipoImpresion.NORMAL, TipoFuente.B, false );
 		ti.imprimirString( sucursalLabel, sucursal.getNombre() );
 		ti.imprimirString( telefonoLabel, sucursal.getTelefonos() );
+
 		// Empleado
 		ti.imprimirString( empleadoLabel, empleado.getNombreApellidos() );
 		ti.alinear( TipoAlineacion.IZQUIERDA );
 		ti.establecerTipoImpresion( TipoImpresion.NORMAL, TipoFuente.A, false );
 		ti.imprimirSeparacion();
+
 		// Cliente
 		ti.imprimirString( clienteLabel, cliente.getNombreCompleto( false ) );
 		ti.imprimirString( domicilioLabel, cliente.getDireccionCli() );
 		ti.imprimirString( coloniaLabel, cliente.getColoniaCli() );
 		ti.imprimirString( cpLabel, cliente.getCodigo() );
 		ti.imprimirString( telefonoLabel, casaLabel + " " + cliente.getTelCasaCli() + " " + trabajoLabel + " " + cliente.getTelTrabCli() + " " + adicionalLabel + " " + cliente.getTelAdiCli() );
+
 		// Separacion
 		ti.alinear( TipoAlineacion.IZQUIERDA );
 		ti.establecerTipoImpresion( TipoImpresion.NORMAL, TipoFuente.A, false );
@@ -1053,13 +1096,16 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 		ti.imprimirString( fechaEntregaLabel, sdf.format( jbNota.getFechaProm() ) );
 		ti.imprimirString( servicioLabel, jbNota.getServicio() );
 		ti.imprimirString( instruccionesLabel, jbNota.getInstruccion() );
+
 		// Separacion
 		ti.alinear( TipoAlineacion.CENTRO );
 		ti.imprimirSeparacionInterna();
 		ti.alinear( TipoAlineacion.IZQUIERDA );
 		ti.alimentarPapel( 20 );
+
 		// Condiciones Generales
 		ti.imprimirString( condicionesLabel, jbNota.getCondicion() );
+
 		// Firma Cliente
 		ti.alimentarPapel( 180 );
 		ti.alinear( TipoAlineacion.CENTRO );
@@ -1067,11 +1113,13 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 		ti.imprimirLineaFirma();
 		ti.imprimirString( cliente.getNombreCompleto( false ) );
 		ti.saltoLinea();
+
 		// Separacion
 		ti.alinear( TipoAlineacion.CENTRO );
 		ti.imprimirSeparacionInterna();
 		ti.alinear( TipoAlineacion.IZQUIERDA );
 		ti.alimentarPapel( 20 );
+
 		// Nota
 		ti.imprimirString( notaLabel, notaContent );
         ti.alimentarPapel( 15 );
@@ -1345,5 +1393,19 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
         ti.alimentarPapel( 200 );
         ti.cortarPapel( TipoCorte.CORTE_PARCIAL );
         ti.finalizarImpresion();
+    }
+
+    private File createTempFile (String tipo){
+
+        File file = null;
+
+        try {
+            String nombreArchivo = tipo + Long.toString( new Date().getTime() ) + Double.toString( Math.random() );
+            file = File.createTempFile( nombreArchivo, null );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return file.getAbsoluteFile();
     }
 }

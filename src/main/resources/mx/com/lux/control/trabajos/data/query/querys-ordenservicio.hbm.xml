@@ -85,7 +85,6 @@
     </query>
 
 	<!-- JB_SERVICIOS -->
-
 	<query name="findAllJbServicios">
 		FROM JbServicio
 	</query>

@@ -2,6 +2,7 @@ package mx.com.lux.control.trabajos.view.container.recepcion;
 
 import mx.com.lux.control.trabajos.bussiness.service.impresora.TrabajoImpresion;
 import mx.com.lux.control.trabajos.bussiness.service.sistema.login.LoginService;
+import mx.com.lux.control.trabajos.bussiness.service.sobres.SobreService;
 import mx.com.lux.control.trabajos.bussiness.service.trabajo.TrabajoService;
 import mx.com.lux.control.trabajos.data.vo.*;
 import mx.com.lux.control.trabajos.exception.ApplicationException;
@@ -24,9 +25,7 @@ import org.eclipse.swt.widgets.*;
 import org.eclipse.wb.swt.SWTResourceManager;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.*;
 import java.util.List;
 
 public class NoSatisfactorioDialog extends Dialog {
@@ -34,9 +33,11 @@ public class NoSatisfactorioDialog extends Dialog {
 	private static final TrabajoService trabajoService;
 	private static final TrabajoImpresion trabajoImpresion;
 	private static final LoginService loginService;
+    private static final SobreService sobreService;
 
 	private Jb jb = new Jb();
 	private JbRoto jbRoto = new JbRoto();
+    private JbSobre jbSobre;
 	private JbRoto jbRotoTemp = new JbRoto();
 	private JbLlamada jbLlamadaExist = new JbLlamada();
 	private JbLlamada jbLlamada = new JbLlamada();
@@ -66,7 +67,9 @@ public class NoSatisfactorioDialog extends Dialog {
 		trabajoService = (TrabajoService) ServiceLocator.getBean( BeanNamesContext.BEAN_NAME_TRABAJO_SERVICE );
 		trabajoImpresion = (TrabajoImpresion) ServiceLocator.getBean( BeanNamesContext.BEAN_NAME_TRABAJO_IMPRESION );
 		loginService = (LoginService) ServiceLocator.getBean( BeanNamesContext.BEAN_NAME_LOGIN_SERVICE );
+        sobreService = (SobreService) ServiceLocator.getBean( BeanNamesContext.BEAN_NAME_SOBRE_SERVICE );
 	}
+
 
 	public NoSatisfactorioDialog( Shell parentShell ) {
 		super( parentShell );
@@ -347,16 +350,36 @@ public class NoSatisfactorioDialog extends Dialog {
 						saveUpdateObjs[4] = jbTrackRecibeSuc;
 						saveUpdateObjs[3] = jbTrackRotoEnviar;
 
-						if ( jbRoto.getLlamada() ) {
+                        if ( jbRoto.getLlamada() ) {
 							setValuesJbLlamada();
 							saveUpdateObjs[5] = jbLlamada;
 						}
 
-						trabajoService.saveOrUpdateDeleteObjectList( saveUpdateObjs, delObjs );
+                        jbSobre = null;
 
-						if ( Constants.ARTICULOS_ID_GENERICO_ARMAZON.equalsIgnoreCase( jbRoto.getTipo().trim() ) ) {
-							trabajoImpresion.imprimirNoSatisfactorio( jb, jbRoto, e, empleado.getSucursal() );
+                        trabajoService.saveOrUpdateDeleteObjectList( saveUpdateObjs, delObjs );
+
+                        if ( jbRoto.getTipo().equals(Constants.ARTICULOS_ID_GENERICO_ARMAZON) ) {
+
+                            jbSobre = new JbSobre();
+                            Integer idRoto = jbRoto.getIdRoto();
+
+                            jbSobre.setFolioSobre( idRoto.toString());
+                            jbSobre.setArea("ROTO ARMAZON");
+                            jbSobre.setContenido(jbRoto.getMaterial());
+                            jbSobre.setDest("ROTO ARMAZON");
+                            jbSobre.setFecha( new Timestamp( new Date().getTime() ) );
+                            jbSobre.setIdMod( "0" );
+                            jbSobre.setEmp("ROTO");
+
+                            sobreService.saveSobre( jbSobre );
+                        }
+
+
+                        if ( Constants.ARTICULOS_ID_GENERICO_ARMAZON.equalsIgnoreCase( jbRoto.getTipo().trim() ) ) {
+							trabajoImpresion.imprimirNoSatisfactorio( jb, jbRoto, e, empleado.getSucursal(), jbSobre );
 						}
+
 
 					} else {
 						MessageDialog.openError( shell, MessagesPropertyHelper.getProperty( "recepcion.no.satisfactorio.responsable.error.title" ), MessagesPropertyHelper.getProperty( "recepcion.no.satisfactorio.responsable.error.message" ) );
@@ -398,6 +421,7 @@ public class NoSatisfactorioDialog extends Dialog {
 			jbRoto.setFechaProm( getDateFromPicker() );
 			jbRoto.setFecha( new Timestamp( System.currentTimeMillis() ) );
 			jbRoto.setIdMod( Constants.CERO_STRING );
+
 		} catch ( ApplicationException e ) {
 			e.printStackTrace();
 		}
