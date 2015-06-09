@@ -211,12 +211,16 @@ public class ReprogramarDialog extends Dialog {
 		txtDias.setBounds( 297, 10, 57, 20 );
 		txtDias.setTextLimit( 4 );
 
-        Integer diasDif = DateUtils.daysBetweenCeilDayHours( new Date(), fechaVolverLlamar );
+        if ( fechaVolverLlamar == null ) {
+            txtDias.setText(parametroVolverContactar.getValor());
+        }else {
+            Integer diasDif = DateUtils.daysBetweenCeilDayHours(new Date(), fechaVolverLlamar);
 
-        if ( diasDif <= 0 ) {
-            txtDias.setText( parametroVolverContactar.getValor() );
-        }else{
-            txtDias.setText( diasDif.toString() );
+            if (diasDif <= 0) {
+                txtDias.setText(parametroVolverContactar.getValor());
+            } else {
+                txtDias.setText(diasDif.toString());
+            }
         }
 
 

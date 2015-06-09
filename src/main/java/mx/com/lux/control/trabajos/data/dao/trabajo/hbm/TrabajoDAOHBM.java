@@ -640,7 +640,7 @@ public class TrabajoDAOHBM extends DAOSupport implements TrabajoDAO {
 
         List<JbSobre> lista = query.list();
 
-        JbSobre jbSobre = new JbSobre();
+        JbSobre jbSobre = null;
 
         if ( lista != null ) {
             for ( JbSobre js : lista ) {

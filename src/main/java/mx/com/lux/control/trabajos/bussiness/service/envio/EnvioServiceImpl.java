@@ -310,8 +310,6 @@ public class EnvioServiceImpl implements EnvioService {
                     }else {
                         contenido = contenido + rx + coma + " ";
                     }
-
-
                 }
             }
 
