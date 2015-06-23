@@ -213,6 +213,7 @@ public class ReprogramarDialog extends Dialog {
 
         if ( fechaVolverLlamar == null ) {
             txtDias.setText(parametroVolverContactar.getValor());
+            dias = Integer.parseInt( txtDias.getText() );
         }else {
             Integer diasDif = DateUtils.daysBetweenCeilDayHours(new Date(), fechaVolverLlamar);
 

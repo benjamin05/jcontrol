@@ -3,6 +3,7 @@ package mx.com.lux.control.trabajos.bussiness.service.contacto;
 import mx.com.lux.control.trabajos.bussiness.CorreoElectronicoBusiness;
 import mx.com.lux.control.trabajos.data.dao.contacto.ContactoViewDAO;
 import mx.com.lux.control.trabajos.data.dao.trabajo.GParametroDAO;
+import mx.com.lux.control.trabajos.data.dao.trabajo.JbGrupoDAO;
 import mx.com.lux.control.trabajos.data.dao.trabajo.TrabajoDAO;
 import mx.com.lux.control.trabajos.data.vo.*;
 import mx.com.lux.control.trabajos.exception.ApplicationException;
@@ -23,10 +24,7 @@ import javax.annotation.Resource;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service( "contactoViewService" )
 public class ContactoViewServiceImpl implements ContactoViewService {
@@ -34,6 +32,9 @@ public class ContactoViewServiceImpl implements ContactoViewService {
     private final Logger log = LoggerFactory.getLogger( ContactoViewService.class );
 
     private static final String SHELL_CMD = TrabajosPropertyHelper.getProperty( "trabajos.msg.sms.cmd" );
+
+    @Resource
+    private JbGrupoDAO jbGrupoDAO;
 
     @Resource
     private ContactoViewDAO contactoViewDAO;
@@ -167,9 +168,29 @@ public class ContactoViewServiceImpl implements ContactoViewService {
     }
 
     private String crearContenidoAcuseSms( final String rx, Boolean recepcion ) throws DAOException {
+
+        String grupo = null;
+        String Rx = rx;
+
+        if ( rx.startsWith("F") ) {
+
+            List<Jb> listaTrabajosEnGrupo = new ArrayList<Jb>();
+            listaTrabajosEnGrupo = jbGrupoDAO.listaTrabajosEnGrupo( StringUtils.trimToEmpty( rx ) );
+
+            for ( Jb jb : listaTrabajosEnGrupo ) {
+                FormaContacto fc = obtenFormaContactoDeRx( jb.getRx() );
+                if ( fc.getTipoContacto().getIdTipoContacto() == 3 ) { // Si forma contacto SMS
+                    Rx = jb.getRx().toString();
+                }
+            }
+        }
+
+
+
+
         Empleado empleado = ( Empleado ) Session.getAttribute( Constants.PARAM_USER_LOGGED );
-        FormaContacto formaContacto = obtenFormaContactoDeRx( rx );
-        Jb trabajo = trabajoDAO.findById( rx );
+        FormaContacto formaContacto = obtenFormaContactoDeRx( Rx );
+        Jb trabajo = trabajoDAO.findById( Rx );
         JbLlamada llamada = trabajoDAO.findJbLlamadaById( rx );
         if(recepcion ){
           llamada = new JbLlamada();
