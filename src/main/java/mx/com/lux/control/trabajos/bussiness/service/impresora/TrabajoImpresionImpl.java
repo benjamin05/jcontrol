@@ -734,11 +734,16 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 
         String colSurte = "";
 
-        if ( !tracks.isEmpty() )
+        if ( !tracks.isEmpty() ) {
             // Si existe en JB_TRACK.estado = FAX, agregar una "F" en JB.surte
-            colSurte = "F" + jb.getSurte();
-        else
+//            if ( jb.getEstado().getIdEdo().trim().equals("RPE") ) {
+            if ( jb.getEstado().getIdEdo().trim().equals("RPE") )
+                colSurte = jb.getSurte();
+            else
+                colSurte = "F" + jb.getSurte();
+        } else {
             colSurte = jb.getSurte();
+        }
 
         //No incluir en ticket si es Fax con surte Pino
         if ( colSurte.trim().equals("FP") )

@@ -384,10 +384,14 @@ public class MenuInfoTrabajos {
                             }
                         } else if (jb.getSurte().trim().equals("P")) {
                             enviarFax = true;
+                        } else if ( jb.getSurte() == null ) {
+                            enviarFax = true;
+                        } else if ( jb.getSurte().trim().equals("") ) {
+                            enviarFax = true;
                         }
                     }
 
-                    if (enviarFax == false) {
+                    if ( enviarFax == false ) {
                         MessageDialog.openWarning(shell, "Acción invalida", "Acción invalida, Trabajo no se puede enviar por Fax");
                         return;
                     }
