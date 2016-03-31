@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/util/ApplicationUtils.java" afterPath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/util/ApplicationUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/contacto/ContactoViewServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/contacto/ContactoViewServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/envio/EnvioServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/envio/EnvioServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/recepcion/RecepcionDialog.java" afterPath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/recepcion/RecepcionDialog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/impresora/TrabajoImpresionImpl.java" afterPath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/impresora/TrabajoImpresionImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/database.properties" afterPath="$PROJECT_DIR$/src/main/resources/database.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jsoi.iml" afterPath="$PROJECT_DIR$/jsoi.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jsoi.ipr" afterPath="$PROJECT_DIR$/jsoi.ipr" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jsoi.iws" afterPath="$PROJECT_DIR$/jsoi.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/release.properties" afterPath="$PROJECT_DIR$/src/main/resources/release.properties" />
-    </list>
+    <list default="true" id="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" name="Default" comment="" />
     <ignored path="jsoi.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" time="1459449947545" ignored="false" />
@@ -30,6 +17,7 @@
     <file path="/ContactoViewService.java" changelist="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" time="1401403436049" ignored="false" />
     <file path="/ContactoViewServiceImpl.java" changelist="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" time="1401403592780" ignored="false" />
     <file path="/DAOSupport.java" changelist="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" time="1401807252027" ignored="false" />
+    <file path="$PROJECT_DIR$/jsoi.iws" changelist="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" time="1459450211342" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
