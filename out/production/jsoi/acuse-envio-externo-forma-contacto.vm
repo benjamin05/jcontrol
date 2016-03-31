@@ -1,1 +1,0 @@
-#if("$!formaContacto"!="")C11Val=11%#altnull(${formaContacto.rx})%#altnull(${formaContacto.idCliente})%#altnull(${formaContacto.tipoContacto.idTipoContacto})%#altnull(${formaContacto.contacto})%#altnull(${formaContactoObservaciones})%#format_date(${formaContacto.fechaMod})%#altnull(${formaContacto.idSucursal})%|#end

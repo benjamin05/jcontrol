@@ -139,4 +139,19 @@ public class ApplicationUtils {
 	public static <T> List<T> compruebaLista( final List<T> lista ) {
 		return lista != null ? lista : new ArrayList<T>();
 	}
+
+    public static String shiftStringRight(String string, Integer length, String s){
+
+        String tmp = string;
+
+        for ( int i = 0; i < length ; i++ ) {
+            tmp = s + tmp;
+        }
+
+        if ( tmp.length() - length > 0 ) {
+            tmp = tmp.substring(tmp.length() - length, tmp.length());
+        }
+
+        return tmp;
+    }
 }

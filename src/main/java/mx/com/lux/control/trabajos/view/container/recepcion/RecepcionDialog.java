@@ -270,9 +270,8 @@ public class RecepcionDialog extends Dialog {
             if ( esTipoContactoSMS( rx ) ) {
                 esContactoSMS = true;
                 strInfo = TrabajosPropertyHelper.getProperty("trabajos.msg.sms.envio");
+                estado = ContactoPropertyHelper.getProperty( "contacto.estado.entregar.ae" );
             }
-
-            estado = ContactoPropertyHelper.getProperty( "contacto.estado.entregar.ae" );
 
             empleado = (Empleado) Session.getAttribute( Constants.PARAM_USER_LOGGED );
             currentJb = trabajoService.findById( rx );
@@ -356,17 +355,19 @@ public class RecepcionDialog extends Dialog {
                         Status status = new Status( IStatus.ERROR, "JSOI", 0, "Error al registrar contacto SMS", null );
                         ErrorDialog.openError( shell, "Error", "Error", status );
                     }
+
+                    JbTrack currentJbt = new JbTrack();
+                    currentJbt.setRx( rx );
+                    currentJbt.setEstado( estado );
+                    currentJbt.setObservaciones( StringUtils.defaultIfBlank( strInfo, "" ) );
+                    currentJbt.setEmpleado( empleado.getIdEmpleado() );
+                    currentJbt.setIdViaje( null );
+                    currentJbt.setFecha( new Date() );
+                    currentJbt.setIdMod( "0" );
+                    Object[] objRealizado = { currentJbLlamada, currentJbt, currentJb };
+                    saveContactoTrackJb(objRealizado);
                 }
-                JbTrack currentJbt = new JbTrack();
-                currentJbt.setRx( rx );
-                currentJbt.setEstado( estado );
-                currentJbt.setObservaciones( StringUtils.defaultIfBlank( strInfo, "" ) );
-                currentJbt.setEmpleado( empleado.getIdEmpleado() );
-                currentJbt.setIdViaje( null );
-                currentJbt.setFecha( new Date() );
-                currentJbt.setIdMod( "0" );
-                Object[] objRealizado = { currentJbLlamada, currentJbt, currentJb };
-                saveContactoTrackJb(objRealizado);
+
             }
         }
     }

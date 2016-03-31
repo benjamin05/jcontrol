@@ -158,12 +158,12 @@ public class ContactoViewServiceImpl implements ContactoViewService {
             acuse.setFechaCarga( new Date() );
             acuse.setContenido( crearContenidoAcuseSms( rx, recepcion ) );
             contactoViewDAO.save( acuse );
-            Runtime.getRuntime().exec( SHELL_CMD );
+            //Runtime.getRuntime().exec( SHELL_CMD );
         } catch ( DAOException e ) {
             throw new ServiceException( "Error al registrar contacto SMS", e );
-        } catch ( IOException e ) {
-            throw new ServiceException( "Error al registrar contacto SMS", e );
-        }
+        } //catch ( IOException e ) {
+            //throw new ServiceException( "Error al registrar contacto SMS", e );
+        //}
     }
 
     private String crearContenidoAcuseSms( final String rx, Boolean recepcion ) throws DAOException {
