@@ -14,12 +14,15 @@ import mx.com.lux.control.trabajos.exception.PrinterException;
 import mx.com.lux.control.trabajos.exception.SystemException;
 import mx.com.lux.control.trabajos.util.properties.ImpresionPropertyHelper;
 import mx.com.lux.control.trabajos.util.ApplicationUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -36,6 +39,7 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 	private static final int TAM_COL_SURTE = 5;
 	private static final int TAM_COL_ID_DOC = 15;
 	private static final int TAM_COL_CANTIDAD = 15;
+    private static final int TAM_COL_FOLIO_P = 15;
 	private static final String ACEPTA_CLIENTE_LABEL = ImpresionPropertyHelper.getProperty( "orden-servicio.label.acepta-cliente" );
 	private static final String PREFIJO_ORDEN_SERVICIO = "S";
 	private static final String sobreLabel = "SOBRE:";
@@ -86,6 +90,7 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 	private static final String titleColumnaSurte = "SURTE";
 	private static final String titleColumnaIdDocto = "DOCUMENTO";
 	private static final String titleColumnaCantidad = "CANTIDAD";
+    private static final String titleColumnaFolioP = "FOLIO P";
 	private static final String tituloPackingPrevio = "PACKING PREVIO";
 	private static final String tituloPackingCerrado = "PACKING CERRADO";
 	private static final String tituloRoto = "ROTO ARM.";
@@ -305,6 +310,7 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 			ti.alinear( TipoAlineacion.IZQUIERDA );
 			ti.imprimirEncabezado( TAM_COL_ID_DOC, titleColumnaIdDocto );
 			ti.imprimirEncabezado( TAM_COL_CANTIDAD, titleColumnaCantidad );
+            ti.imprimirEncabezado( TAM_COL_FOLIO_P, titleColumnaFolioP );
 			ti.saltoLinea();
 			// Contenido
 			ti.alinear( TipoAlineacion.IZQUIERDA );
@@ -759,8 +765,22 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
     }
 
 	private void imprimirDevolucion( DoctoInv doctoInv, ImpresoraTM88 ti ) throws IOException, DAOException {
+        String folioP = "";
+        if(doctoInv.getNotas() != null && StringUtils.trimToEmpty(doctoInv.getNotas()).length() > 0 && StringUtils.trimToEmpty(doctoInv.getNotas()).contains("P")){
+          String data = StringUtils.trimToEmpty(doctoInv.getNotas()).replace("P","");
+          Integer value = null;
+          try{
+            value = NumberFormat.getInstance().parse(data).intValue();
+          } catch ( ParseException e ){
+            System.out.println(e);
+          }
+          if( value != null ){
+            folioP = StringUtils.trimToEmpty(value.toString());
+          }
+        }
 		ti.imprimirString( TAM_COL_ID_DOC, doctoInv.getIdDocto() );
 		ti.imprimirString( TAM_COL_CANTIDAD, doctoInv.getCantidad() );
+        ti.imprimirString( TAM_COL_FOLIO_P, folioP );
 	}
 
 	private void imprimirJbDev( JbDev jbDev, ImpresoraTM88 ti ) throws IOException, DAOException {
