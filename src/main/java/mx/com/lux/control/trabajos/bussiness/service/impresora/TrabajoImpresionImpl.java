@@ -591,6 +591,7 @@ public class TrabajoImpresionImpl implements TrabajoImpresion {
 			ti.alinear( TipoAlineacion.IZQUIERDA );
 			ti.imprimirEncabezado( TAM_COL_ID_DOC, titleColumnaIdDocto );
 			ti.imprimirEncabezado( TAM_COL_CANTIDAD, titleColumnaCantidad );
+            ti.imprimirEncabezado( TAM_COL_FOLIO_P, titleColumnaFolioP );
 			ti.saltoLinea();
 			// Contenido
 			ti.alinear( TipoAlineacion.IZQUIERDA );
