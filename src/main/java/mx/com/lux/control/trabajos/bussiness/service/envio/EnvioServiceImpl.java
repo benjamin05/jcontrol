@@ -26,6 +26,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.sql.Timestamp;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -279,6 +280,19 @@ public class EnvioServiceImpl implements EnvioService {
                 }
 
                 contenido =  contenido + "P" + sobre.getId() + coma + " ";
+            }
+
+            for ( DoctoInv di : ApplicationUtils.compruebaLista( doctoInvList ) ) {
+              if( StringUtils.trimToEmpty(di.getNotas()).length()> 0 && StringUtils.trimToEmpty(di.getNotas()).contains("P") ){
+                String data = StringUtils.trimToEmpty(di.getNotas()).substring(1);
+                Integer idSobre = 0;
+                try{
+                  idSobre = NumberFormat.getInstance().parse(data).intValue();
+                } catch ( ParseException ex ){
+                  System.out.println( ex );
+                }
+                contenido =  contenido + "P" + (idSobre > 0 ? StringUtils.trimToEmpty(idSobre.toString()) : "") + coma + " ";
+              }
             }
 
             // Se termina campo rxVal=
