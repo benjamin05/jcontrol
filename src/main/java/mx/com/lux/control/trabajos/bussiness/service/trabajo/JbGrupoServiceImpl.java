@@ -47,7 +47,10 @@ public class JbGrupoServiceImpl implements JbGrupoService {
 	public void saveGrupoTrackContactoRealizado( Object[] object ) throws ApplicationException {
 		Integer[] operaciones = new Integer[object.length];
 		operaciones[0] = DAOSupport.INSERT_OR_UPDATE;
-		operaciones[1] = DAOSupport.DELETE;
+
+        if ( object[1] != null )
+		    operaciones[1] = DAOSupport.DELETE;
+
 		for ( int i = 2; i < operaciones.length; i++ ) {
 			operaciones[i] = DAOSupport.INSERT;
 		}

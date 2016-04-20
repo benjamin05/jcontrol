@@ -20,6 +20,7 @@ public class JbDev implements Serializable {
 	private Timestamp fecha;
 	private String idMod;
 	private Boolean rx;
+    private Integer idSobre;
 
 	public Integer getId() {
 		return id;
@@ -183,4 +184,12 @@ public class JbDev implements Serializable {
 		result = 37 * result + ( rx ? 1 : 0 );
 		return result;
 	}
+
+    public void setIdSobre(Integer idSobre){
+        this.idSobre = idSobre;
+    }
+
+    public Integer getIdSobre(){
+        return idSobre;
+    }
 }

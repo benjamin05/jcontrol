@@ -3,6 +3,7 @@ package mx.com.lux.control.trabajos.data.dao.trabajo.hbm;
 import mx.com.lux.control.trabajos.data.dao.DAOSupport;
 import mx.com.lux.control.trabajos.data.dao.trabajo.TrabajoTrackDAO;
 import mx.com.lux.control.trabajos.data.vo.Jb;
+import mx.com.lux.control.trabajos.data.vo.JbTrack;
 import mx.com.lux.control.trabajos.data.vo.TrackView;
 import mx.com.lux.control.trabajos.exception.DAOException;
 import org.hibernate.SessionFactory;
@@ -38,5 +39,12 @@ public class TrabajoTrackDAOHBM extends DAOSupport implements TrabajoTrackDAO {
 	public int countAllTrackView( String rx ) throws DAOException {
 		return countByNamedQuery( QUERY_COUNT_ALL_TRACKVIEW, new String[]{ QUERY_FINDALL_Table_jb_BY_FILTERS_PARAM_RX }, new Object[]{ rx } );
 	}
+
+    @SuppressWarnings( "unchecked" )
+    @Override
+    public List<JbTrack> findAllJbTrack(String rx) throws DAOException {
+        return (List<JbTrack>) findByNamedQuery( "findJbTrackByRx", new Object[] { rx }  );
+    }
+
 
 }

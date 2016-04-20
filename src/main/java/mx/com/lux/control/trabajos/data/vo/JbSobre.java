@@ -18,6 +18,7 @@ public class JbSobre implements java.io.Serializable {
 	private Timestamp fecha;
 	private String idMod;
 	private String rx;
+    private Integer idSobre;
 
 	public JbSobre() {
 	}
@@ -143,4 +144,15 @@ public class JbSobre implements java.io.Serializable {
 	public void setId( Integer id ) {
 		this.id = id;
 	}
+
+/*
+    public Integer getIdSobre() {
+        return idSobre;
+    }
+
+    public void setIdSobre(Integer idSobre) {
+        this.idSobre = idSobre;
+    }
+*/
+
 }

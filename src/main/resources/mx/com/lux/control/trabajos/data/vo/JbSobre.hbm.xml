@@ -3,9 +3,9 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="mx.com.lux.control.trabajos.data.vo.JbSobre" table="jb_sobres" schema="public">
-        <id name="id" column="id" type="integer">
+        <id name="id" column="id_sobre" type="integer">
             <generator class="sequence">
-                <param name="sequence">jb_sobres_id_seq</param>
+                <param name="sequence">jb_sobres_id_sobre_seq</param>
             </generator>
         </id>
         <property name="folioSobre" column="folio_sobre" type="string"/>
@@ -18,5 +18,12 @@
         <property name="fecha" column="fecha" type="java.sql.Timestamp" length="35"/>
         <property name="idMod" column="id_mod" type="string" length="13"/>
         <property name="rx" column="rx" type="string"/>
+<!--
+        <id name="idSobre" column="id_sobre" type="int" >
+            <generator class="sequence">
+                <param name="sequence">jb_sobres_id_sobre_seq</param>
+            </generator>
+        </id>
+-->
     </class>
 </hibernate-mapping>

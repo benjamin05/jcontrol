@@ -1,2 +1,0 @@
-#macro(altnull $variable)#if("$!variable"!="")${variable.toString().trim()}#end#end
-#macro(format_date $date)#if("$!date"=="")#else${dateFormat.format(${date})}#end#end

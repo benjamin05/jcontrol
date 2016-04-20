@@ -16,7 +16,7 @@ public interface TrabajoImpresion {
 
     void imprimirPackingCerradoHist( Date fecha, int idViaje, String folioViaje, Empleado empleado, Sucursal sucursal, List<JbViajeDet> trabajosLab, List<JbViajeDet> trabajosRotosExternos, List<JbViajeDet> trabajosRefRepSp, List<JbViajeDet> trabajosGarantias, List<JbViajeDet> trabajosOrdenesServicio, List<JbViajeDet> trabajosExternos, List<JbSobre> sobresVacios, List<JbSobre> sobresNoVacios, List<JbDev> trabajosDevoluciones, List<DoctoInv> doctoInvList ) throws ApplicationException;
 
-	void imprimirNoSatisfactorio( Jb jb, JbRoto jbRoto, Empleado empleado, Sucursal sucursal ) throws ApplicationException;
+	void imprimirNoSatisfactorio( Jb jb, JbRoto jbRoto, Empleado empleado, Sucursal sucursal, JbSobre jbSobre) throws ApplicationException;
 
 	void imprimirOrdenServicio( JbNota jbNota, Empleado empleado, Jb jb, Cliente cliente, Sucursal sucursal, Boolean flag ) throws ApplicationException;
 

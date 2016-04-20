@@ -577,9 +577,77 @@ public class TrabajoDAOHBM extends DAOSupport implements TrabajoDAO {
         return lista;
     }
 
-
     public void saveJb( Jb jb ) throws DAOException{
-
         getSession().save( jb );
+    }
+
+    @SuppressWarnings( "unchecked" )
+    @Override
+    public Integer getLastNumOrdenRepo( String rx ) throws DAOException {
+
+        StringBuilder sb = new StringBuilder();
+        sb.append( "FROM Reposicion r " );
+        sb.append( "WHERE r.factura=:rxParam " );
+        sb.append( "ORDER BY r.numeroOrden" );
+        Query query = getSession().createQuery( sb.toString() );
+        query.setText( "rxParam", rx.trim() );
+
+        List<Reposicion> lista = query.list();
+
+        Integer numOrden = null;
+
+        if ( lista != null ) {
+            for ( Reposicion repo : lista ) {
+                numOrden = repo.getNumeroOrden();
+            }
+        }
+
+        return numOrden;
+    }
+
+    @SuppressWarnings( "unchecked" )
+    @Override
+    public JbServicio getJbServicioServicio( String servicio ) throws DAOException {
+
+        StringBuilder sb = new StringBuilder();
+        sb.append( "FROM JbServicio js " );
+        sb.append( "WHERE js.servicio=:servicio " );
+        Query query = getSession().createQuery( sb.toString() );
+        query.setText( "servicio", servicio.trim() );
+
+        List<JbServicio> lista = query.list();
+
+        JbServicio jbServicio = null;
+
+        if ( lista != null ) {
+            for ( JbServicio js : lista ) {
+                jbServicio = js;
+            }
+        }
+
+        return jbServicio;
+    }
+
+    public JbSobre getSobreFolioSobreAndEmp(String folioSobre, String emp ) throws DAOException {
+
+        StringBuilder sb = new StringBuilder();
+        sb.append( "FROM JbSobre js " );
+        sb.append( "WHERE js.folioSobre=:folioSobre " );
+        sb.append( "AND js.emp=:emp " );
+        Query query = getSession().createQuery( sb.toString() );
+        query.setText( "folioSobre", folioSobre.trim() );
+        query.setText( "emp", emp.trim() );
+
+        List<JbSobre> lista = query.list();
+
+        JbSobre jbSobre = null;
+
+        if ( lista != null ) {
+            for ( JbSobre js : lista ) {
+                jbSobre = js;
+            }
+        }
+
+        return jbSobre;
     }
 }

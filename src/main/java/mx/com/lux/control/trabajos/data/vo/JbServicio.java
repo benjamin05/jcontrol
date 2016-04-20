@@ -11,7 +11,8 @@ public class JbServicio implements Serializable {
 
 	private static final long serialVersionUID = 5146001691205531678L;
 
-	private String servicio;
+    private Integer idServicio;
+    private String servicio;
 
 	public JbServicio() {
 	}
@@ -28,4 +29,11 @@ public class JbServicio implements Serializable {
 		this.servicio = servicio;
 	}
 
+    public Integer getIdServicio() {
+        return idServicio;
+    }
+
+    public void setIdServicio(Integer idServicio) {
+        this.idServicio = idServicio;
+    }
 }

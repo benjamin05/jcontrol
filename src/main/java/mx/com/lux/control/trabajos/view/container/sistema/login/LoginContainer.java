@@ -70,7 +70,7 @@ public class LoginContainer {
 		GridData txtEmpleadoGridData = new GridData( SWT.FILL, SWT.FILL, true, false );
 		txtEmpleadoGridData.heightHint = 20;
 		txtEmpleado.setLayoutData( txtEmpleadoGridData );
-		txtEmpleado.setTextLimit( 4 );
+		//txtEmpleado.setTextLimit( 4 );
 
 		Label lblPassword = new Label( grupo, SWT.NONE );
 		lblPassword.setBackgroundImage( ControlTrabajosWindowElements.backgroundImage );
@@ -81,7 +81,7 @@ public class LoginContainer {
 		GridData txtPasswordGridData = new GridData( SWT.FILL, SWT.FILL, true, false );
 		txtPasswordGridData.heightHint = 20;
 		txtPassword.setLayoutData( txtPasswordGridData );
-		txtPassword.setTextLimit( 8 );
+		//txtPassword.setTextLimit( 8 );
 
 		btnAceptar = new Button( grupo, SWT.NONE );
 		btnAceptar.setImage( ControlTrabajosWindowElements.logInIcon );

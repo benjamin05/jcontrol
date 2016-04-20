@@ -18,5 +18,6 @@
 		<property name="fecha" column="fecha" type="java.sql.Timestamp" length="35" />
 		<property name="idMod" column="id_mod" type="string" length="13" />
 		<property name="rx" column="rx" type="boolean" />
+        <property name="idSobre" column="id_sobre" type="integer" />
 	</class>
 </hibernate-mapping>

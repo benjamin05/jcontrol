@@ -302,13 +302,19 @@ public class RecepcionDialog extends Dialog {
                 calendar = Calendar.getInstance();
                 calendar.setTime(new Date());
                 calendar.add(Calendar.DAY_OF_YEAR, 8);
-                currentJb.setVolverLlamar(calendar.getTime());
+                currentJb.setVolverLlamar(null);
                 if ( listaTrabajosEnGrupo != null && !listaTrabajosEnGrupo.isEmpty() ) {
                     Object[] objRealizado = new Object[listaTrabajosEnGrupo.size() + 2];
                     objRealizado[0] = currentJb;
-                    objRealizado[1] = currentJbLlamada;
+                    //objRealizado[1] = currentJbLlamada;
 
                     if ( esContactoSMS ) {
+
+                        // Poner 8 dias, si es contacto SMS
+                        currentJb.setVolverLlamar(calendar.getTime());
+                        objRealizado[0] = currentJb;
+                        objRealizado[1] = currentJbLlamada;
+
                         java.util.List<Jb> listaTrabajosContacto = new ArrayList<Jb>();
                         listaTrabajosContacto.add( currentJb );
                         listaTrabajosContacto.addAll( listaTrabajosEnGrupo );
@@ -329,6 +335,7 @@ public class RecepcionDialog extends Dialog {
                     }
 
                     int i = 2;
+
                     for ( Jb jb : listaTrabajosEnGrupo ) {
                         JbTrack jbTrack = new JbTrack();
                         jbTrack.setRx( jb.getRx() );
@@ -347,7 +354,19 @@ public class RecepcionDialog extends Dialog {
                     }
                 }
             } else if( !grupo ) {
+                Boolean enviaSMS = false;
+
                 if ( esContactoSMS ) {
+                    if ( jb.getNoLlamar() != null ) {
+                        if ( jb.getNoLlamar() == false ) {
+                            enviaSMS = true;
+                        }
+                    }else{
+                        enviaSMS = true;
+                    }
+                }
+
+                if ( enviaSMS ) {
                     try {
                         contactoViewService.registraContactoSMS( rx, true );
                         MessageDialog.openInformation( getShell(), strInfo, TrabajosPropertyHelper.getProperty( "trabajos.msg.sms.info" ) );
@@ -367,7 +386,6 @@ public class RecepcionDialog extends Dialog {
                     Object[] objRealizado = { currentJbLlamada, currentJbt, currentJb };
                     saveContactoTrackJb(objRealizado);
                 }
-
             }
         }
     }

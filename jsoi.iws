@@ -2,12 +2,47 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/trabajos/BuscarTrabajoRotoDialog.java" afterPath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/trabajos/BuscarTrabajoRotoDialog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/contacto/ContactoViewServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/contacto/ContactoViewServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/trabajos/Desretener.java" afterPath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/trabajos/Desretener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/externos/EnvioExternoDialog.java" afterPath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/externos/EnvioExternoDialog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/envio/EnvioServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/envio/EnvioServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mx/com/lux/control/trabajos/data/vo/JbDev.hbm.xml" afterPath="$PROJECT_DIR$/src/main/resources/mx/com/lux/control/trabajos/data/vo/JbDev.hbm.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/data/vo/JbDev.java" afterPath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/data/vo/JbDev.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mx/com/lux/control/trabajos/data/vo/JbGarantia.hbm.xml" afterPath="$PROJECT_DIR$/src/main/resources/mx/com/lux/control/trabajos/data/vo/JbGarantia.hbm.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/data/vo/JbGarantia.java" afterPath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/data/vo/JbGarantia.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/trabajo/JbGrupoServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/trabajo/JbGrupoServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mx/com/lux/control/trabajos/data/vo/JbServicio.hbm.xml" afterPath="$PROJECT_DIR$/src/main/resources/mx/com/lux/control/trabajos/data/vo/JbServicio.hbm.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/data/vo/JbServicio.java" afterPath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/data/vo/JbServicio.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mx/com/lux/control/trabajos/data/vo/JbSobre.hbm.xml" afterPath="$PROJECT_DIR$/src/main/resources/mx/com/lux/control/trabajos/data/vo/JbSobre.hbm.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/data/vo/JbSobre.java" afterPath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/data/vo/JbSobre.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/sistema/login/LoginContainer.java" afterPath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/sistema/login/LoginContainer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/trabajos/MenuInfoTrabajos.java" afterPath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/trabajos/MenuInfoTrabajos.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/recepcion/NoSatisfactorioDialog.java" afterPath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/recepcion/NoSatisfactorioDialog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/recepcion/RecepcionDialog.java" afterPath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/recepcion/RecepcionDialog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/trabajos/ReimpresionPackingDialog.java" afterPath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/trabajos/ReimpresionPackingDialog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/trabajos/ReprogramarDialog.java" afterPath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/trabajos/ReprogramarDialog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/data/dao/envio/hbm/SucursalDAOHBM.java" afterPath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/data/dao/envio/hbm/SucursalDAOHBM.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/data/dao/trabajo/TrabajoDAO.java" afterPath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/data/dao/trabajo/TrabajoDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/data/dao/trabajo/hbm/TrabajoDAOHBM.java" afterPath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/data/dao/trabajo/hbm/TrabajoDAOHBM.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/impresora/TrabajoImpresion.java" afterPath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/impresora/TrabajoImpresion.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/impresora/TrabajoImpresionImpl.java" afterPath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/impresora/TrabajoImpresionImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/trabajo/TrabajoServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/trabajo/TrabajoServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/data/dao/trabajo/TrabajoTrackDAO.java" afterPath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/data/dao/trabajo/TrabajoTrackDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/data/dao/trabajo/hbm/TrabajoTrackDAOHBM.java" afterPath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/data/dao/trabajo/hbm/TrabajoTrackDAOHBM.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/trabajo/TrabajoTrackService.java" afterPath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/trabajo/TrabajoTrackService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/trabajo/TrabajoTrackServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/trabajo/TrabajoTrackServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/database.properties" afterPath="$PROJECT_DIR$/src/main/resources/database.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jsoi.iws" afterPath="$PROJECT_DIR$/jsoi.iws" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mx/com/lux/control/trabajos/data/query/querys-ordenservicio.hbm.xml" afterPath="$PROJECT_DIR$/src/main/resources/mx/com/lux/control/trabajos/data/query/querys-ordenservicio.hbm.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/mx/com/lux/control/trabajos/data/query/querys-trabajo.hbm.xml" afterPath="$PROJECT_DIR$/src/main/resources/mx/com/lux/control/trabajos/data/query/querys-trabajo.hbm.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/release.properties" afterPath="$PROJECT_DIR$/src/main/resources/release.properties" />
     </list>
     <ignored path="jsoi.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" time="1459981658237" ignored="false" />
-    <file path="/database.properties" changelist="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" time="1459454744185" ignored="false" />
+    <file path="/Dummy.txt" changelist="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" time="1461088713439" ignored="false" />
+    <file path="/database.properties" changelist="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" time="1459982008714" ignored="false" />
     <file path="/RecepcionContainer.java" changelist="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" time="1401396928923" ignored="false" />
     <file path="/ConsultaContainer.java" changelist="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" time="1401747890351" ignored="false" />
     <file path="/RecepcionDialog.java" changelist="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" time="1401815248920" ignored="false" />
@@ -20,8 +55,9 @@
     <file path="/ContactoViewServiceImpl.java" changelist="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" time="1401403592780" ignored="false" />
     <file path="/DAOSupport.java" changelist="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" time="1401807252027" ignored="false" />
     <file path="/TrabajoImpresionImpl.java" changelist="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" time="1459889559883" ignored="false" />
-    <file path="/EnvioServiceImpl.java" changelist="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" time="1459865571746" ignored="false" />
+    <file path="/EnvioServiceImpl.java" changelist="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" time="1459981750310" ignored="false" />
     <file path="/EnviosContainer.java" changelist="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" time="1459889472516" ignored="false" />
+    <file path="/CorreoElectronicoBusinessImpl.java" changelist="7e68f60d-4a51-48ff-b7b4-c1e9bea881b3" time="1461089290578" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +77,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -110,6 +145,7 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </line_breakpoints>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -119,19 +155,73 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="EnviosContainer.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/envios/EnviosContainer.java">
+      <file leaf-file-name="EnvioServiceImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/envio/EnvioServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="326" column="55" selection-start="15782" selection-end="15782" vertical-scroll-proportion="0.0">
+            <state line="144" column="46" selection-start="6180" selection-end="6180" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EnvioServiceImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/envio/EnvioServiceImpl.java">
+      <file leaf-file-name="ContactoContainer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/contacto/ContactoContainer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="104" column="43" selection-start="4420" selection-end="4420" vertical-scroll-proportion="0.0">
+            <state line="242" column="80" selection-start="11638" selection-end="11638" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ContactoViewDataDialog.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/contacto/ContactoViewDataDialog.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="306" column="66" selection-start="13090" selection-end="13090" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ContactoViewServiceImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/contacto/ContactoViewServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="261" column="48" selection-start="12158" selection-end="12158" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CorreoElectronicoBusinessImpl.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/impl/CorreoElectronicoBusinessImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="54" column="77" selection-start="2138" selection-end="2138" vertical-scroll-proportion="0.38235295">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="notificacion-correo-electronico-entregar.vm" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/notificacion-correo-electronico-entregar.vm">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ApplicationUtils.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/util/ApplicationUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="35" column="32" selection-start="1940" selection-end="1940" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TrabajosPropertyHelper.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/util/properties/TrabajosPropertyHelper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="0" selection-start="437" selection-end="437" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -140,16 +230,7 @@
       <file leaf-file-name="database.properties" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/database.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="47" selection-start="95" selection-end="100" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TrabajoImpresionImpl.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/impresora/TrabajoImpresionImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="882" column="126" selection-start="33986" selection-end="33986" vertical-scroll-proportion="0.030800821">
+            <state line="1" column="47" selection-start="100" selection-end="100" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -186,9 +267,9 @@
         <option value="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/consulta/ConsultaContainer.java" />
         <option value="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/recepcion/RecepcionDialog.java" />
         <option value="$PROJECT_DIR$/jsoi.iws" />
-        <option value="$PROJECT_DIR$/src/main/resources/database.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/envio/EnvioServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/impresora/TrabajoImpresionImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/envio/EnvioServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/database.properties" />
       </list>
     </option>
   </component>
@@ -221,7 +302,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1" splitterProportion="0.5">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
       <flattenPackages ProjectPane="true" />
       <showMembers />
       <showModules />
@@ -232,7 +313,88 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jsoi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jsoi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jcontrol" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jsoi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jcontrol" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jsoi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jcontrol" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jsoi" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jcontrol" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="project.structure.last.edited" value="Modules" />
@@ -405,21 +567,21 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30152673" sideWeight="0.5600649" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39694658" sideWeight="0.49675325" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35756156" sideWeight="0.49756494" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.59082216" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3225191" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35146105" sideWeight="0.6764361" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39951378" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3638574" sideWeight="0.6958175" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3638574" sideWeight="0.6977186" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.332696" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30343512" sideWeight="0.5600649" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32313576" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -489,56 +651,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/jsoi.iws">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="568" column="39" selection-start="32767" selection-end="32767" vertical-scroll-proportion="0.054347824" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/trabajos/NoContactarDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="148" column="47" selection-start="6621" selection-end="6621" vertical-scroll-proportion="0.4147844" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/util/constants/EstadoTrabajo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="4" selection-start="137" selection-end="137" vertical-scroll-proportion="0.03" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/impl/NoContactarServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="24" selection-start="1319" selection-end="1319" vertical-scroll-proportion="0.21149898" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/trabajos/MenuInfoTrabajos.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="217" column="70" selection-start="11226" selection-end="11226" vertical-scroll-proportion="0.030800821" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/consulta/ConsultaContainer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="134" column="47" selection-start="6507" selection-end="6507" vertical-scroll-proportion="0.03218884" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mx/com/lux/control/trabajos/resources/Messages.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="1045" selection-end="1045" vertical-scroll-proportion="0.332" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/util/ApplicationUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="138" column="30" selection-start="5491" selection-end="5491" vertical-scroll-proportion="0.33333334" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/acuse-poliza.vm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/acuse-contacto-sms.vm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/macros.vm">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -556,23 +668,93 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/impresora/TrabajoImpresionImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="890" column="5" selection-start="33771" selection-end="33771" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/util/constants/EstadoConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="53" selection-start="1496" selection-end="1518" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/util/constants/JbTipoConstants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="25" selection-start="183" selection-end="183" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/util/properties/TrabajosPropertyHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="0" selection-start="437" selection-end="437" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/envio/EnvioServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="43" selection-start="4420" selection-end="4420" vertical-scroll-proportion="0.0">
+        <state line="144" column="46" selection-start="6180" selection-end="6180" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/util/ApplicationUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="32" selection-start="1940" selection-end="1940" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/notificacion-correo-electronico-entregar.vm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/database.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="47" selection-start="95" selection-end="100" vertical-scroll-proportion="0.0">
+        <state line="1" column="47" selection-start="100" selection-end="100" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/impresora/TrabajoImpresionImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/contacto/ContactoContainer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="882" column="126" selection-start="33986" selection-end="33986" vertical-scroll-proportion="0.030800821">
+        <state line="242" column="80" selection-start="11638" selection-end="11638" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/view/container/contacto/ContactoViewDataDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="306" column="66" selection-start="13090" selection-end="13090" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/service/contacto/ContactoViewServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="261" column="48" selection-start="12158" selection-end="12158" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../lib/contents/spring-context-support/3.0.4.RELEASE/source/spring-context-support-3.0.4.RELEASE.jar!/org/springframework/mail/javamail/JavaMailSenderImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="342" column="16" selection-start="10956" selection-end="10956" vertical-scroll-proportion="0.3322884">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/mx/com/lux/control/trabajos/bussiness/impl/CorreoElectronicoBusinessImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="77" selection-start="2138" selection-end="2138" vertical-scroll-proportion="0.38235295">
           <folding />
         </state>
       </provider>

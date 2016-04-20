@@ -4,6 +4,7 @@ import mx.com.lux.control.trabajos.data.dao.trabajo.TrabajoTrackDAO;
 import mx.com.lux.control.trabajos.data.vo.JbTrack;
 import mx.com.lux.control.trabajos.data.vo.TrackView;
 import mx.com.lux.control.trabajos.exception.ApplicationException;
+import mx.com.lux.control.trabajos.exception.DAOException;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -29,5 +30,9 @@ public class TrabajoTrackServiceImpl implements TrabajoTrackService {
 	public void save( JbTrack jbTrack ) throws ApplicationException {
 		trabajoTrackDAO.save( jbTrack );
 	}
+
+    public List<JbTrack> findAllJbTracks(String rx) throws ApplicationException {
+        return trabajoTrackDAO.findAllJbTrack(rx);
+    }
 
 }

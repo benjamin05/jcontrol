@@ -123,4 +123,10 @@ public interface TrabajoDAO extends BasicsDAO {
 
     public void saveJb( Jb jb ) throws DAOException;
 
+    public Integer getLastNumOrdenRepo( String rx ) throws DAOException;
+
+    public JbServicio getJbServicioServicio( String servicio ) throws DAOException;
+
+    public JbSobre getSobreFolioSobreAndEmp(String folioSobre, String emp ) throws DAOException;
+
 }

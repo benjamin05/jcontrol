@@ -6,6 +6,7 @@ import mx.com.lux.control.trabajos.data.vo.Sucursal;
 import mx.com.lux.control.trabajos.exception.DAOException;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -23,7 +24,11 @@ public class SucursalDAOHBM extends DAOSupport implements SucursalDAO {
 
 	@Override
 	public List<?> findAll() throws DAOException {
-		return getSession().createCriteria( Sucursal.class ).list();
+        Criteria criteria = getSession().createCriteria( Sucursal.class );
+        List<Sucursal> lista = criteria.addOrder(Order.asc("nombre")).list();
+
+        return lista;
+		//return getSession().createCriteria( Sucursal.class ).list();
 	}
 
 	@Override
