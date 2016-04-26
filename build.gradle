@@ -30,7 +30,7 @@ repositories {
 }
 
 dependencies {
-  groovy 'org.codehaus.groovy:groovy-all:1.8.6'
+  compile "org.codehaus.groovy:groovy-all:1.8.6"
   compile "org.springframework:spring-core:3.0.4.RELEASE"
   compile "org.springframework:spring-context:3.0.4.RELEASE"
   compile "org.springframework:spring-context-support:3.0.4.RELEASE"

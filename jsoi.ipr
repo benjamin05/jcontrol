@@ -16,18 +16,13 @@
       </profile>
     </annotationProcessing>
   </component>
-  <component name="CopyrightManager" default="">
-    <module2copyright />
-  </component>
+  <component name="CopyrightManager" default="" />
   <component name="DependencyValidationManager">
     <option name="SKIP_IMPORT_STATEMENTS" value="false" />
   </component>
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" />
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
-  </component>
-  <component name="GradleSettings">
-    <option name="gradleHome" value="$PROJECT_DIR$" />
   </component>
   <component name="GradleUISettings">
     <setting name="root" />
@@ -193,4 +188,3 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
   </component>
 </project>
-

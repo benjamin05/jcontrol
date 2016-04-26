@@ -343,6 +343,11 @@ public class TrabajoServiceImpl implements TrabajoService {
 		sb.append( acuse.getIdAcuse() );
 		sb.append( pipe );
 
+		// skuVal
+		sb.append( Constants.SKU_VAL ).append( equal );
+		sb.append( articulos.getIdArticulo() );
+		sb.append( pipe );
+
 		return sb.toString();
 	}
 

@@ -112,5 +112,6 @@ public class Constants {
 	public static String CLIENTE_TIPO_NUEVO = TrabajosPropertyHelper.getProperty( "cliente.tipo.nuevo" );
 	public static String JBNOTA_TIPO_SERVICIO = TrabajosPropertyHelper.getProperty( "jb.nota.tipo.servicio" );
 	public static String LETRA_S = TrabajosPropertyHelper.getProperty( "letra.s" );
+	public static String SKU_VAL = TrabajosPropertyHelper.getProperty( "sku.val" );
 
 }
